@@ -140,6 +140,15 @@ Route::group(['middleware' => ['role:auditor']], function () {
     //updateprofile
     Route::post('/auditor/{user}/update/profile', [App\Http\Controllers\AuditorController::class, 'update']);
 
+    //    tambahstandart
+    Route::post('/tambahStandart', [App\Http\Controllers\StandartController::class, 'create'])->name('tambahStandart');
+    Route::get('/standarts/{standart}', [App\Http\Controllers\StandartController::class, 'show']);
+    //    deletestandart
+    Route::delete('/standarts/{standart}', [App\Http\Controllers\StandartController::class, 'destroy']);
+    //    editstandart
+    Route::get('/standarts/{standart}/edit', [App\Http\Controllers\StandartController::class, 'view']);
+    Route::post('/standarts/{standart}/updates', [App\Http\Controllers\StandartController::class, 'update']);
+
 });
 
 Route::get('/route-cache', function() {

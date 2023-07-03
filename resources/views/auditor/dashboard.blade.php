@@ -120,6 +120,18 @@
                             </ul>
                         </div>
                     </li>
+
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#profile-collapse" aria-expanded="false">
+                            <span>Standar</span>
+                        </button>
+                        <div class="collapse" id="profile-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="{{ route('auditor.profile') }}" class="link-dark rounded">Data</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

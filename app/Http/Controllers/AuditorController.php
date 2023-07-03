@@ -367,4 +367,9 @@ class AuditorController extends Controller
     {
         //
     }
+
+    public function standart()
+    {
+        return view('auditor.standar.standar');
+    }
 }
