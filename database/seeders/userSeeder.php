@@ -54,5 +54,15 @@ class userSeeder extends Seeder
 
         $auditor->assignRole('auditor');
 
+        $ketua = User::create([
+            'name' => 'ketua',
+            'email' => 'ketua@ketua.com',
+            'fakultas' => 'Teknik',
+            'prodi' => 'Sistem Informasi',
+            'password' => bcrypt('ketua123')
+        ]);
+
+        $ketua->assignRole('ketua');
+
     }
 }

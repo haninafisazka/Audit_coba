@@ -48,5 +48,5 @@
     @include('sweetalert::alert')
 
 
-    <title>Sistem Penjaminan Mutu Internal UNIVERSITAS PGRI MADIUN</title>
+    <title>Sistem Audit Internal UNIVERSITAS SEBELAS MARET</title>
 </head>

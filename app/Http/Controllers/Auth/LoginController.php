@@ -63,6 +63,10 @@ class LoginController extends Controller
             return redirect()->route('auditor.dashboard')->with('success', 'Berhasil Login!');
         }
 
+        elseif ($user->hasRole('ketua')){
+            return redirect()->route('ketua.dashboard')->with('success', 'Berhasil Login!');
+        }
+
         return redirect()->route('home')->with('error', 'Login Gagal');
     }
 

@@ -69,6 +69,17 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 });
 
+Route::group(['middleware' => ['role:ketua']], function () {
+
+    Route::get('/ketua/dashboard', [App\Http\Controllers\KetuaController::class, 'index'])->name('ketua.dashboard');
+
+    //profile
+    Route::get('/ketua/profile', [App\Http\Controllers\KetuaController::class, 'profile'])->name('ketua.profile');
+
+    //unitAudit
+    Route::get('/ketua/unitAudit', [App\Http\Controllers\KetuaController::class, 'unitAudit'])->name('ketua.unitAudit');
+});
+
 Route::group(['middleware' => ['role:auditee']], function () {
 
     Route::get('/auditee/dashboard', [App\Http\Controllers\AuditeeController::class, 'index'])->name('auditee.dashboard');

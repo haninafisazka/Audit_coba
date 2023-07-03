@@ -4,11 +4,11 @@
 
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ">
             <a class="d-flex align-items-center mb-lg-0 text-dark text-decoration-none">
-                <img src="{{url('/img/unipma.png')}}" width="50" height="50" role="img">
+                <img src="{{url('/img/uns.png')}}" width="50" height="50" role="img">
             </a>
 
-            <p class="col-12 col-lg-auto me-lg-auto justify-content-center mb-md-0 ms-3">Sistem Penjaminan Mutu Internal
-                <br> UNIVERSITAS PGRI MADIUN </p>
+            <p class="col-12 col-lg-auto me-lg-auto justify-content-center mb-md-0 ms-3">Sistem Audit Intenal
+                <br> UNIVERSITAS SEBELAS MARET </p>
 
             @guest
 
@@ -40,6 +40,11 @@
                                 <li>
                                     <a class="dropdown-item unstyled" href="{{ route('auditor.dashboard') }}">{{ __('Beranda') }}</a>
                                     <a class="dropdown-item unstyled" href="{{ route('auditor.profile') }}">{{ __('Profile') }}</a>
+                                </li>
+                            @elseif (Auth::user()->hasRole('ketua'))
+                                <li>
+                                    <a class="dropdown-item unstyled" href="{{ route('ketua.dashboard') }}">{{ __('Beranda') }}</a>
+                                    <a class="dropdown-item unstyled" href="{{ route('ketua.profile') }}">{{ __('Profile') }}</a>
                                 </li>
                             @endif
                             <li>

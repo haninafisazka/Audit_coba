@@ -31,5 +31,11 @@ class roleSeeder extends Seeder
                 'guard_name' => 'web',
             ]
         );
+
+        Role::create([
+            'name' => 'ketua',
+            'guard_name' => 'web',
+        ]
+    );
     }
 }
