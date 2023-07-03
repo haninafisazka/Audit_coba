@@ -86,7 +86,7 @@
 </script>
 
 <!-- Modal -->
-<div class="modal fade" id="modalPendahuluan" tabindex="-1" aria-labelledby="modalPendahuluan" aria-hidden="true">
+{{-- <div class="modal fade" id="modalPendahuluan" tabindex="-1" aria-labelledby="modalPendahuluan" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -188,7 +188,7 @@
             </form>
         </div>
     </div>
-</div>
+</div> --}}
 
 {{--container--}}
 <div class="container-fluid">
@@ -199,14 +199,14 @@
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#home-collapse" aria-expanded="true">
-                            Penilaian
+                            Setup File
                         </button>
                         <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li class="fw-bold"><a href="{{route('auditee.dashboard')}}" class="link-dark rounded">Data</a>
+                                <li class="fw-bold"><a href="{{route('auditee.dashboard')}}" class="link-dark rounded">Upload</a>
                                 </li>
-                                <li><a href="{{route('auditee.grade')}}" class="link-dark rounded">Lihat hasil</a>
-                                </li>
+                                {{-- <li><a href="{{route('auditee.grade')}}" class="link-dark rounded">Lihat hasil</a>
+                                </li> --}}
                             </ul>
                         </div>
                     </li>
@@ -214,11 +214,12 @@
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#account-collapse" aria-expanded="false">
-                            User
+                            Feedback
                         </button>
                         <div class="collapse show" id="account-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Profil</a></li>
+                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Feedback Temuan</a></li>
+                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Tindak Lanjut Temuan</a></li>
                             </ul>
                         </div>
                     </li>
@@ -226,9 +227,39 @@
             </div>
         </div>
         <div class="col">
-            <h2 class="text-center">Penilai Mutu Universitas PGRI Madiun</h2>
+            <h2 class="text-center">Sistem Audit Internal</h2>
             <hr>
             <div class="card mb-3 p-2">
+                <div class="tab-pane fade show active" id="format_soal" role="tabpanel" aria-labelledby="format_soal-tab">
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table" id="daftarSoal">
+                                <thead class="bg-secondary text-white">
+                                    <tr>
+                                        <th>Upload Setup File (??)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Parameter<br>
+                                            <textarea rows="3" style="width:100%; resize:none;" name="parameter"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Upload File<br>
+                                            <input type="file" name="setup_file" id="setup_file" required>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#kirimsetupfile">Submit</button>
+            {{-- <div class="card mb-3 p-2">
                 <div class="body">
                     <div class="d-flex flex-row bd-highlight">
                         <div class="p-2 bd-highlight">Data pendahuluan : </div>
@@ -246,8 +277,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card p-3">
+            </div> --}}
+            {{-- <div class="card p-3">
                 <form action="/auditee/filter" method="post">
                     @csrf
                     <div class="d-flex flex-row-reverse bd-highlight">
@@ -309,32 +340,33 @@
                     @endforeach
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
+
         </div>
     </div>
-    @if(auth()->user()->fakultas == null || auth()->user()->prodi == null)
+    {{-- @if(auth()->user()->fakultas == null || auth()->user()->prodi == null)
         <div class="alert alert-warning alert-dismissible fade show mt-alerts mt-4" role="alert">
             <strong>Peringatan!</strong> Anda belum mengisi data profil yang diperlukan <a href="{{ route('auditee.profile') }}" class="alert-link">disini</a>.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @else
-    @endif
+    @endif --}}
 </div>
 
 @include('layouts.footer')
 
 <script>
 
-    function responseFunction() {
-        event.preventDefault(); // prevent form submit
+    // function responseFunction() {
+    //     event.preventDefault(); // prevent form submit
 
-        Swal.fire({
-            icon: 'error',
-            title: 'Aksi Dilarang',
-            text: 'Anda Belum mengisikan Data Pendahuluan / Data profil yang diperlukan',
-        })
+    //     Swal.fire({
+    //         icon: 'error',
+    //         title: 'Aksi Dilarang',
+    //         text: 'Anda Belum mengisikan Data Pendahuluan / Data profil yang diperlukan',
+    //     })
 
-    }
+    // }
 
     $(document).ready(function () {
         $('#table_standart').DataTable();

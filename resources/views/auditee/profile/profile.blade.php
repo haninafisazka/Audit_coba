@@ -86,14 +86,14 @@
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#home-collapse" aria-expanded="true">
-                            Penilaian
+                            Setup File
                         </button>
                         <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li ><a href="{{route('auditee.dashboard')}}" class="link-dark rounded">Data</a>
+                                <li class="fw-bold"><a href="{{route('auditee.dashboard')}}" class="link-dark rounded">Upload</a>
                                 </li>
-                                <li><a href="{{route('auditee.dashboard')}}" class="link-dark rounded">Lihat hasil</a>
-                                </li>
+                                {{-- <li><a href="{{route('auditee.grade')}}" class="link-dark rounded">Lihat hasil</a>
+                                </li> --}}
                             </ul>
                         </div>
                     </li>
@@ -101,11 +101,12 @@
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#account-collapse" aria-expanded="false">
-                            User
+                            Feedback
                         </button>
                         <div class="collapse show" id="account-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li class="fw-bold"><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Profil</a></li>
+                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Feedback Temuan</a></li>
+                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Tindak Lanjut Temuan</a></li>
                             </ul>
                         </div>
                     </li>
