@@ -83,29 +83,30 @@
         <div class="col-2 border-end">
             <div id="side-bar" class="ps-3 pt-3 bg-white overflow-auto" style="width: 180px;">
                 <ul class="list-unstyled ps-0">
-                <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#dashboard-collapse" aria-expanded="false">
-                            Unit Audit
-                        </button>
-                        <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('admin.dashboardAuditee')}}" class="link-dark rounded">Data</a>
-                                </li>
-                                <li><a href="{{route('pageTambahAuditee')}}" class="link-dark rounded">Tambah
-                                        Unit</a></li>
-                            </ul>
-                        </div>
-                    </li>
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#home-collapse" aria-expanded="true">
-                            Profile
+                            Setup File
                         </button>
-                        <div class="collapse" id="dashboard-collapse">
+                        <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('ketua.profile')}}" class="link-dark rounded"></a>
+                                <li class="fw-bold"><a href="{{route('auditee.dashboard')}}" class="link-dark rounded">Upload</a>
                                 </li>
+                                {{-- <li><a href="{{route('auditee.grade')}}" class="link-dark rounded">Lihat hasil</a>
+                                </li> --}}
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#account-collapse" aria-expanded="false">
+                            Feedback
+                        </button>
+                        <div class="collapse show" id="account-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Feedback Temuan</a></li>
+                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Tindak Lanjut Temuan</a></li>
                             </ul>
                         </div>
                     </li>
