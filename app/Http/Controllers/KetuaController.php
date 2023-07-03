@@ -44,8 +44,19 @@ class KetuaController extends Controller
 
     public function profile()
     {
-        return view('ketua.profile.profile');
+        return view('ketua.dashboardProfile');
     }
+    
+    public function listAuditor()
+    {
+        return view('ketua.dashboardListAuditor');
+    }
+
+    public function listTim()
+    {
+        return view('ketua.dashboardlistTim');
+    }
+
 
 
     public function grade()
