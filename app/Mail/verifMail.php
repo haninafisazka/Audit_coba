@@ -28,6 +28,6 @@ class verifMail extends Mailable
      */
     public function build()
     {
-        return back()
+        return back();
     }
 }

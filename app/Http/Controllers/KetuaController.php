@@ -10,6 +10,7 @@ use App\Models\Response;
 use App\Models\Standart;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class KetuaController extends Controller
@@ -44,17 +45,17 @@ class KetuaController extends Controller
 
     public function profile()
     {
-        return view('ketua.dashboardProfile');
+        return view('ketua.profile');
     }
     
     public function listAuditor()
     {
-        return view('ketua.dashboardListAuditor');
+        return view('ketua.auditor');
     }
 
     public function listTim()
     {
-        return view('ketua.dashboardlistTim');
+        return view('ketua.tim');
     }
 
 
