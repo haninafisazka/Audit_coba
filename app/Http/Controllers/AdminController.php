@@ -27,6 +27,10 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('standart'));
     }
 
+    public function pageTambahPeriodeAudit()
+    {
+        return view('admin.tambahPeriodeAudit');
+    }
 
     public function pageTambahAuditee()
     {
@@ -51,6 +55,37 @@ class AdminController extends Controller
         $userAuditor = User::role('auditor')->get();
 
         return view('admin.dashboardAuditor', compact('userAuditor'));
+    }
+
+    public function tambahPeriodeAudit(Request $request)
+    {
+        $request->validate([
+            'name'              =>      'required|string|max:30',
+            'fakultas'          =>      'required|string',
+            'prodi'             =>      'required|string',
+            'email'             =>      'required|email|unique:users,email',
+            'password'          =>      'required|alpha_num|min:6',
+        ]);
+
+//        dd($request->all());
+
+        $user = User::create([
+            'name' => ucwords($request['name']),
+            'fakultas' => ucwords($request['fakultas']),
+            'prodi' => ucwords($request['prodi']),
+            'email' => $request['email'],
+            'password' => bcrypt($request['password'])
+        ]);
+
+        $user->assignRole('admin');
+
+        if(!is_null($user)) {
+            return redirect()->route('admin.dashboard')->with("success", "Berhasil Tambah");
+        }
+        else {
+            return back()->with("error", "Proses Gagal");
+        }
+
     }
 
     public function tambahAuditee(Request $request)

@@ -95,7 +95,7 @@
                 <hr>
                 <div class="card mt-4 mb-3">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('tambahAuditee') }}">
+                        <form method="POST" action="{{ route('tambahPeriodeAudit') }}">
                             @csrf
                             <div class="form-group row mt-3 mb-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
