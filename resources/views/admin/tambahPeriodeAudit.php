@@ -68,6 +68,7 @@
                             </ul>
                         </div>
                     </li>
+                    <!--
 {{--                    <li class="border-top my-3"></li>--}}
 {{--                    <li class="mb-1">--}}
 {{--                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">--}}
@@ -79,19 +80,19 @@
 {{--                                <li><a href="#" class="link-dark rounded">Tambah Pengumuman</a></li>--}}
 {{--                            </ul>--}}
 {{--                        </div>--}}
-{{--                    </li>--}}
+{{--                    </li>--}} -->
                 </ul>
             </div>
-        </div>
+        </div> 
         <div class="col-10 border-start">
-{{--            CONTENT--}}
+
             <div class="container-fluid">
                 <h1 class="fw-bold mt-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                         <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                         <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
                     </svg>
-                    TAMBAH AUDITEE </h1>
+                    TAMBAH PERIODE </h1>
                 <hr>
                 <div class="card mt-4 mb-3">
                     <div class="card-body">
