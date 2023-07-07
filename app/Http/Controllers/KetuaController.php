@@ -48,12 +48,12 @@ class KetuaController extends Controller
         return view('ketua.profile');
     }
     
-    public function listAuditor()
+    public function auditor()
     {
         return view('ketua.auditor');
     }
 
-    public function listTim()
+    public function tim()
     {
         return view('ketua.tim');
     }

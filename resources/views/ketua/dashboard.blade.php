@@ -199,11 +199,11 @@
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#home-collapse" aria-expanded="true">
-                            List Auditor
+                            Daftar Tim
                         </button>
                         <div class="collapse" id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('ketua.auditor')}}" class="link-dark rounded">List Auditor</a>
+                                <li> <a class="link-dark rounded" href="{{ route('ketua.tim' ) }}" >Daftar Tim</a>
                                 </li>
                             </ul>
                         </div>
@@ -211,23 +211,12 @@
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#home-collapse" aria-expanded="true">
-                            List Tim
+                            Auditor
                         </button>
                         <div class="collapse" id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('ketua.tim')}}" class="link-dark rounded">List Tim</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#home-collapse" aria-expanded="true">
-                            Profile
-                        </button>
-                        <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('ketua.profile')}}" class="link-dark rounded">Profile</a>
+                                <li>
+                                    <a class="link-dark rounded" href="{{ route('ketua.auditor' ) }}" >{{ __('Auditor') }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -238,6 +227,164 @@
         <div class="col">
             <h2 class="text-center">Sistem Audit Internal</h2>
             <hr>
+            <!-- Recent Sales -->
+            <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+
+        
+
+                <div class="card-body">
+
+                <table id="table_standart" class="table table-striped text-center table-bordered">
+                    <thead>
+                    <tr class="border-bottom">
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prodi</th>
+                        <th scope="col">Fakultas</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                    </thead>    
+<!--        
+                    <div class="search-container">
+                
+        <div class="new-column">+ New</div>
+        <form id="search-form" onsubmit="search(event)">
+            <input type="text" id="search-input" placeholder="Search...">
+        </form>
+        </div>
+
+        <style>
+        .search-container {
+            display: flex;
+            justify-content: space-between; /* Menempatkan elemen di antara tepi kanan dan kiri */
+            align-items: center;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            margin-left: 9px;
+            margin-right: 15px;
+        }
+
+        .new-column {
+            background-color: green;
+            color: white;
+            padding: 4px;
+            width: 7%;
+            border-radius: 3px;
+            /* text: center; */
+        }
+        </style>
+
+    -->
+
+                    <tbody>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>Informatika</td>
+                        <td>Teknologi Informasi dan Sains Data</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>2</a></th>
+                        <td>Arsitektur</td>
+                        <td>Teknik</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>3</a></th>
+                        <td>Kedokteran</td>
+                        <td>Kedokteran</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>4</a></th>
+                        <td>Matematika</td>
+                        <td>Matematika dan Ilmu Pengetahuan Alam</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>5</a></th>
+                        <td>Ekonomi</td>
+                        <td>Ekonomi dan Bisnis</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>6</a></th>
+                        <td>Agroteknologi</td>
+                        <td>Pertanian</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>7</a></th>
+                        <td>Seni Rupa</td>
+                        <td>Seni Rupa dan Desain</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>8</a></th>
+                        <td>Sains Data</td>
+                        <td>Teknologi Informasi dan Sains Data</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>9</a></th>
+                        <td>Hukum</td>
+                        <td>Hukum</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!--
+                <label for="entries-per-page">Entries per page:</label>
+                    <select id="entries-per-page" onchange="changeEntriesPerPage()">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                         Tambahkan opsi lain sesuai kebutuhan -->
+                    </select>
+
+                </div>
+
+            </div>
+            </div><!-- End Recent Sales -->
+            <!--
             <div class="card mb-3 p-2">
                 <div class="tab-pane fade show active" id="format_soal" role="tabpanel" aria-labelledby="format_soal-tab">
                     <div class="card-body">
@@ -267,7 +414,9 @@
                     </div>
                 </div>
             </div>
+\
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#kirimsetupfile">Submit</button>
+            -->
             {{-- <div class="card mb-3 p-2">
                 <div class="body">
                     <div class="d-flex flex-row bd-highlight">

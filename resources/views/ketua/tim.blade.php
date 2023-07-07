@@ -186,6 +186,164 @@
                 </ul>
             </div>
         </div>
+
+        <!-- list tim -->
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+
+        
+
+                <div class="card-body">
+
+                <table class="table table-borderless datatable">
+                    <thead>
+                    <tr class="border-bottom">
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prodi</th>
+                        <th scope="col">Fakultas</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                    </thead>            
+
+                
+
+                    <div class="search-container">
+        <div class="new-column">+ New</div>
+        <form id="search-form" onsubmit="search(event)">
+            <input type="text" id="search-input" placeholder="Search...">
+        </form>
+        </div>
+
+        <style>
+        .search-container {
+            display: flex;
+            justify-content: space-between; /* Menempatkan elemen di antara tepi kanan dan kiri */
+            align-items: center;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            margin-left: 9px;
+            margin-right: 15px;
+        }
+
+        .new-column {
+            background-color: green;
+            color: white;
+            padding: 4px;
+            width: 7%;
+            border-radius: 3px;
+            /* text: center; */
+        }
+        </style>
+
+
+
+                    <tbody>
+                    <tr class="border-bottom">
+                        <th scope="row"><a href=>1</a></th>
+                        <td>Informatika</td>
+                        <td>Teknologi Informasi dan Sains Data</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a href=>2</a></th>
+                        <td>Arsitektur</td>
+                        <td>Teknik</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a href=>3</a></th>
+                        <td>Kedokteran</td>
+                        <td>Kedokteran</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a href=>4</a></th>
+                        <td>Matematika</td>
+                        <td>Matematika dan Ilmu Pengetahuan Alam</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a href=>5</a></th>
+                        <td>Ekonomi</td>
+                        <td>Ekonomi dan Bisnis</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a href=>6</a></th>
+                        <td>Agroteknologi</td>
+                        <td>Pertanian</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a href=>7</a></th>
+                        <td>Seni Rupa</td>
+                        <td>Seni Rupa dan Desain</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a href=>8</a></th>
+                        <td>Sains Data</td>
+                        <td>Teknologi Informasi dan Sains Data</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a href=>9</a></th>
+                        <td>Hukum</td>
+                        <td>Hukum</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <label for="entries-per-page">Entries per page:</label>
+                    <select id="entries-per-page" onchange="changeEntriesPerPage()">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <!-- Tambahkan opsi lain sesuai kebutuhan -->
+                    </select>
+
+                </div>
+
+            </div>
+            </div><!-- End list tim -->
+
         <div class="col-10 border-start">
             <div class="container-fluid">
                 <h1 class="fw-bold mt-3">
