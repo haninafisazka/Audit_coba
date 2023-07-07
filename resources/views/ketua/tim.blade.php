@@ -139,7 +139,7 @@
                         </button>
                         <div class="collapse" id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('ketua.profile')}}" class="link-dark rounded"></a>
+                                <li><a href="{{route('ketua.auditor')}}" class="link-dark rounded"></a>
                                 </li>
                             </ul>
                         </div>
@@ -151,7 +151,7 @@
                         </button>
                         <div class="collapse" id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('ketua.profile')}}" class="link-dark rounded"></a>
+                                <li><a href="{{route('ketua.tim')}}" class="link-dark rounded"></a>
                                 </li>
                             </ul>
                         </div>

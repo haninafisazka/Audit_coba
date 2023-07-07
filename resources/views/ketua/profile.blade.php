@@ -86,27 +86,36 @@
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#home-collapse" aria-expanded="true">
-                            Setup File
+                            List Auditor
                         </button>
-                        <div class="collapse show" id="home-collapse">
+                        <div class="collapse" id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li class="fw-bold"><a href="{{route('auditee.dashboard')}}" class="link-dark rounded">Upload</a>
+                                <li><a href="{{route('ketua.auditor')}}" class="link-dark rounded"></a>
                                 </li>
-                                {{-- <li><a href="{{route('auditee.grade')}}" class="link-dark rounded">Lihat hasil</a>
-                                </li> --}}
                             </ul>
                         </div>
                     </li>
-
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#account-collapse" aria-expanded="false">
-                            Feedback
+                                data-bs-target="#home-collapse" aria-expanded="true">
+                            List Tim
                         </button>
-                        <div class="collapse show" id="account-collapse">
+                        <div class="collapse" id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Feedback Temuan</a></li>
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Tindak Lanjut Temuan</a></li>
+                                <li><a href="{{route('ketua.tim')}}" class="link-dark rounded"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#home-collapse" aria-expanded="true">
+                            Profile
+                        </button>
+                        <div class="collapse" id="dashboard-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="{{route('ketua.profile')}}" class="link-dark rounded"></a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -189,7 +198,7 @@
                                 </table>
                                 <hr>
                                 <button type="submit" id="simpan" class=" btn btn-success btn-sm hide">Simpan</button>
-                                <a href="{{ route('auditee.dashboard') }}"><button type="button" id="kembali" class="btn btn-secondary btn-sm">Kembali</button></a>
+                                <a href="{{ route('ketua.dashboard') }}"><button type="button" id="kembali" class="btn btn-secondary btn-sm">Kembali</button></a>
                                 </form>
                             </div>
                         </div>

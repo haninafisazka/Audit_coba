@@ -78,13 +78,13 @@ Route::group(['middleware' => ['role:ketua']], function () {
     Route::get('/ketua/dashboard', [App\Http\Controllers\KetuaController::class, 'index'])->name('ketua.dashboard');
 
     //ListTim
-    Route::get('/ketua/dashboardListTim', [App\Http\Controllers\KetuaController::class, 'dashboardListTim'])->name('ketua.dashboardListTim');
+    Route::get('/ketua/tim', [App\Http\Controllers\KetuaController::class, 'tim'])->name('ketua.tim');
 
     //ListAuditor
-    Route::get('/ketua/dashboardListAuditor', [App\Http\Controllers\KetuaController::class, 'dashboardListAuditor'])->name('ketua.dashboardListAuditor');
+    Route::get('/ketua/auditor', [App\Http\Controllers\KetuaController::class, 'auditor'])->name('ketua.auditor');
 
     //Profile
-    Route::get('/ketua/dashboardProfile', [App\Http\Controllers\KetuaController::class, 'dashboardProfile'])->name('ketua.dashboardProfile');
+    Route::get('/ketua/profile', [App\Http\Controllers\KetuaController::class, 'profile'])->name('ketua.profile');
 
     //update profile
     //Route::post('/ketua/{user}/update/profile', [App\Http\Controllers\AuditeeController::class, 'update']);
