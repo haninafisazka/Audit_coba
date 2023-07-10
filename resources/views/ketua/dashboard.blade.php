@@ -197,29 +197,14 @@
             <div id="side-bar" class="ps-3 pt-3 bg-white overflow-auto" style="width: 180px;">
                 <ul class="list-unstyled ps-0">
                     <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#home-collapse" aria-expanded="true">
+                        <a class="btn btn-toggle align-items-center rounded" href="{{ route('ketua.tim') }}">
                             Daftar Tim
-                        </button>
-                        <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li> <a class="link-dark rounded" href="{{ route('ketua.tim' ) }}" >Daftar Tim</a>
-                                </li>
-                            </ul>
-                        </div>
+                        </a>
                     </li>
                     <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#home-collapse" aria-expanded="true">
+                        <a class="btn btn-toggle align-items-center rounded" href="{{ route('ketua.auditor') }}">
                             Auditor
-                        </button>
-                        <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li>
-                                    <a class="link-dark rounded" href="{{ route('ketua.auditor' ) }}" >{{ __('Auditor') }}</a>
-                                </li>
-                            </ul>
-                        </div>
+                        </a>
                     </li>
                 </ul>
             </div>

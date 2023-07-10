@@ -43,7 +43,9 @@
                                 </li>
                             @elseif (Auth::user()->hasRole('ketua'))
                                 <li>
+                                    <!---
                                     <a class="dropdown-item unstyled" href="{{ route('ketua.dashboard') }}">{{ __('Beranda') }}</a>
+                                    -->
                                     <a class="dropdown-item unstyled" href="{{ route('ketua.profile') }}">{{ __('Profile') }}</a>
                                 </li>
                             @endif

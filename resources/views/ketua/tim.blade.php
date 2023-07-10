@@ -126,63 +126,34 @@
 </form>
 -->
 
-
+{{--container--}}
 <div class="container-fluid">
-    <div class="row pt-3">
-        <div class="col">
+    <div class="row mt-3">
+        <div class="col-2 border-end">
             <div id="side-bar" class="ps-3 pt-3 bg-white overflow-auto" style="width: 180px;">
                 <ul class="list-unstyled ps-0">
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#home-collapse" aria-expanded="true">
-                            List Auditor
+                            Daftar Tim
                         </button>
                         <div class="collapse" id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('ketua.auditor')}}" class="link-dark rounded"></a>
-                                </li>
+                                <li><a class="link-dark rounded" href="{{ route('ketua.tim') }}" >Daftar Tim</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#home-collapse" aria-expanded="true">
-                            List Tim
+                            Auditor
                         </button>
                         <div class="collapse" id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('ketua.tim')}}" class="link-dark rounded"></a>
-                                </li>
+                                <li><a class="link-dark rounded" href="{{ route ('ketua.auditor') }}">Auditor</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#home-collapse" aria-expanded="true">
-                            Profile
-                        </button>
-                        <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('ketua.profile')}}" class="link-dark rounded"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <!--
-{{--                    <li class="border-top my-3"></li>--}}
-{{--                    <li class="mb-1">--}}
-{{--                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"--}}
-{{--                                data-bs-target="#account-collapse" aria-expanded="false">--}}
-{{--                            Pengumuman--}}
-{{--                        </button>--}}
-{{--                        <div class="collapse" id="account-collapse">--}}
-{{--                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">--}}
-{{--                                <li><a href="#" class="link-dark rounded">Data</a></li>--}}
-{{--                                <li><a href="#" class="link-dark rounded">Tambah Pengumuman</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </li>--}}
--->
                 </ul>
             </div>
         </div>
