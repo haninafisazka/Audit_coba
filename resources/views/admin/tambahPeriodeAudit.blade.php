@@ -40,9 +40,9 @@
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                             Set Up
                         </button>
-                        <div class="collapse" id="home-collapse">
+                        <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode</a></li>
+                                <li class="fw-bold"><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode</a></li>
                             </ul>
                         </div>
                     </li>
@@ -50,7 +50,7 @@
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
                             Auditee
                         </button>
-                        <div class="collapse show" id="dashboard-collapse">
+                        <div class="collapse" id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="{{route('admin.dashboardAuditee')}}" class="link-dark rounded">Data</a></li>
                                 <li class="fw-bold"><a href="{{route('pageTambahAuditee')}}" class="link-dark rounded">Tambah Auditee</a></li>
@@ -85,7 +85,7 @@
             </div>
         </div> 
         <div class="col-10 border-start">
-
+{{--            CONTENT--}}
             <div class="container-fluid">
                 <h1 class="fw-bold mt-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
@@ -99,12 +99,12 @@
                         <form method="POST" action="{{ route('tambahPeriodeAudit') }}">
                             @csrf
                             <div class="form-group row mt-3 mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <label for="tanggal" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control  @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input id="tanggal" type="text" class="form-control  @error('tanggal') is-invalid @enderror" name="tanggal" value="{{ old('tanggal') }}" required autocomplete="tanggal" autofocus>
 
-                                    @error('name')
+                                    @error('tanggal')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -113,94 +113,58 @@
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="fakultas" class="col-md-4 col-form-label text-md-right">{{ __('Fakultas') }}</label>
+                                <label for="no_sk" class="col-md-4 col-form-label text-md-right">{{ __('Nomor SK') }}</label>
 
                                 <div class="col-md-6">
+                                    <input id="no_sk" type="text" class="form-control  @error('no_sk') is-invalid @enderror" name="no_sk" value="{{ old('no_sk') }}" required autocomplete="no_sk" autofocus>
 
-                                    <select id="opt-fakultas" name="fakultas" class="form-select fakultas  @error('fakultas') is-invalid @enderror" >
+                                    @error('no_sk')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('Ketua SPI') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="ketua_spi" type="ketua_spi" class="form-control @error('ketua_spi') is-invalid @enderror" name="ketua_spi" value="{{ old('ketua_spi') }}" required autocomplete="ketua_spi" autofocus>
+
+                                    @error('ketua_spi')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="nip_ketua" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="nip_ketua" type="nip_ketua" class="form-control @error('nip_ketua') is-invalid @enderror" name="nip_ketua" value="{{ old('nip_ketua') }}" required autocomplete="nip_ketua" autofocus>
+
+                                    @error('nip_ketua')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="keterangan" class="col-md-4 col-form-label text-md-right">{{ __('Keterangan') }}</label>
+
+                                <div class="col-md-6">
+                                    <select id="opt-keterangan" name="keterangan" class="form-select keterangan  @error('keterangan') is-invalid @enderror" >
                                         <option></option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Keguruan Ilmu Pendidikan">Keguruan Ilmu Pendidikan</option>
-                                        <option class="Ekonomi & Bisnis" value="Ekonomi & Bisnis">Ekonomi & Bisnis</option>
-                                        <option class="Teknik" value="Teknik">Teknik</option>
-                                        <option class="Ilmu Kesehatan & Sains" value="Ilmu Kesehatan & Sains">Ilmu Kesehatan & Sains</option>
-                                        <option class="Ilmu Hukum" value="Ilmu Hukum">Ilmu Hukum</option>
-                                        <option class="Pascasarjana Pendidikan Ilmu Pengetahuan Sosial" value="Pascasarjana Pendidikan Ilmu Pengetahuan Sosial">Pascasarjana Pendidikan Ilmu Pengetahuan Sosial</option>
-                                        <option class="Pascasarjana Pendidikan Ilmu Bahasa dan Sastra Indonesia" value="Pascasarjana Pendidikan Ilmu Bahasa dan Sastra Indonesia">Pascasarjana Pendidikan Ilmu Bahasa dan Sastra Indonesia</option>
+                                        <option class="Belum teraudit" value="Belum teraudit">Belum teraudit</option>
+                                        <option class="Teraudit" value="Teraudit">Teraudit</option>
                                     </select>
 
-                                    @error('fakultas')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="prodi" class="col-md-4 col-form-label text-md-right">{{ __('Program Studi') }}</label>
-
-                                <div class="col-md-6">
-
-                                    <select id="opt-prodi" name="prodi" class="form-select prodi @error('prodi') is-invalid @enderror" value="{{ old('prodi') }}">
-                                        <option></option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Guru Sekolah Dasar">Pendidikan Guru Sekolah Dasar</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Guru Pendidikan Anak Usia Dini">Pendidikan Guru Pendidikan Anak Usia Dini</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Bimbingan Konseling">Bimbingan Konseling</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Pancasila dan Kewarganegaraan">Pendidikan Pancasila dan Kewarganegaraan</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Sejarah">Pendidikan Sejarah</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Akuntansi">Pendidikan Akuntansi</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Ekonomi">Pendidikan Ekonomi</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Bahasa dan Sastra Indonesia">Pendidikan Bahasa dan Sastra Indonesia</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Bahasa Inggris">Pendidikan Bahasa Inggris</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Matematika">Pendidikan Matematika</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Biologi">Pendidikan Biologi</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Fisika">Pendidikan Fisika</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Teknik Elektro">Pendidikan Teknik Elektro</option>
-                                        <option class="Keguruan Ilmu Pendidikan" value="Pendidikan Profesi Guru">Pendidikan Profesi Guru</option>
-                                        <option class="Ekonomi & Bisnis" value="Akuntansi">Akuntansi</option>
-                                        <option class="Ekonomi & Bisnis" value="Manajemen">Manajemen</option>
-                                        <option class="Ekonomi & Bisnis" value="D3 Manajemen Pajak">D3 Manajemen Pajak</option>
-                                        <option class="Teknik" value="Teknik Informatika">Teknik Informatika</option>
-                                        <option class="Teknik" value="Sistem Informasi">Sistem Informasi</option>
-                                        <option class="Teknik" value="Teknik Industri">Teknik Industri</option>
-                                        <option class="Teknik" value="Teknik Kimia">Teknik Kimia</option>
-                                        <option class="Teknik" value="Teknik Elektro">Teknik Elektro</option>
-                                        <option class="Ilmu Kesehatan & Sains" value="Farmasi">Farmasi</option>
-                                        <option class="Ilmu Kesehatan & Sains" value="Ilmu Keolahragaan">Ilmu Keolahragaan</option>
-                                        <option class="Ilmu Hukum" value="Hukum">Hukum</option>
-                                        <option class="Pascasarjana Pendidikan Ilmu Pengetahuan Sosial" value="Pascasarjana Pendidikan Ilmu Pengetahuan Sosial">Pascasarjana Pendidikan Ilmu Pengetahuan Sosial</option>
-                                        <option class="Pascasarjana Pendidikan Ilmu Bahasa dan Sastra Indonesia" value="Pascasarjana Pendidikan Ilmu Bahasa dan Sastra Indonesia">Pascasarjana Pendidikan Ilmu Bahasa dan Sastra Indonesia</option>
-                                    </select>
-
-                                    @error('prodi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                    @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                    @error('password')
+                                    @error('keterangan')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -211,7 +175,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                        {{ __('Submit') }}
                                     </button>
                                     <a href="{{ url()->previous() }}">
                                         <button type="button" class="btn btn-secondary"> {{ __('Batal') }}</button>
@@ -232,22 +196,15 @@
 
     <script>
         $(function(){
-            $("#opt-fakultas").on("change",function(){
-                var levelClass = $('#opt-fakultas').find('option:selected').attr('class');
+            $("#opt-keterangan").on("change",function(){
+                var levelClass = $('#opt-keterangan').find('option:selected').attr('class');
                 console.log(levelClass);
-                $('#opt-prodi option').each(function () {
-                    var self = $(this);
-                    if (self.hasClass(levelClass) || typeof(levelClass) == "undefined") {
-                        self.show();
-                    } else {
-                        self.hide();
-                    }
-                });
+                
             });
         });
 
         $(document).ready(function() {
-            $(".fakultas").select2({
+            $(".keterangan").select2({
                 theme: "bootstrap-5",
                 placeholder: "",
             });
