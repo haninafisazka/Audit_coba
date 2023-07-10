@@ -186,6 +186,175 @@
                 </ul>
             </div>
         </div>
+
+        <!-- list auditor -->
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+
+        
+
+                <div class="card-body">
+
+                <table id="table_standart" class="table table-striped text-center table-bordered">
+                    <thead>
+                    <tr class="border-bottom">
+                        <th scope="col">No</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">No Telepon</th>
+                        <th scope="col">Tim</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                    </thead>    
+<!--        
+                    <div class="search-container">
+                
+        <div class="new-column">+ New</div>
+        <form id="search-form" onsubmit="search(event)">
+            <input type="text" id="search-input" placeholder="Search...">
+        </form>
+        </div>
+
+        <style>
+        .search-container {
+            display: flex;
+            justify-content: space-between; /* Menempatkan elemen di antara tepi kanan dan kiri */
+            align-items: center;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            margin-left: 9px;
+            margin-right: 15px;
+        }
+
+        .new-column {
+            background-color: green;
+            color: white;
+            padding: 4px;
+            width: 7%;
+            border-radius: 3px;
+            /* text: center; */
+        }
+        </style>
+
+    -->
+
+                    <tbody>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>AD001</td>
+                        <td>Sujiman</td>
+                        <td>08112233445566</td>
+                        <td>4</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>AD001</td>
+                        <td>Sujiman</td>
+                        <td>08112233445566</td>
+                        <td>4</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>AD001</td>
+                        <td>Sujiman</td>
+                        <td>08112233445566</td>
+                        <td>4</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>AD001</td>
+                        <td>Sujiman</td>
+                        <td>08112233445566</td>
+                        <td>4</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>AD001</td>
+                        <td>Sujiman</td>
+                        <td>08112233445566</td>
+                        <td>4</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>AD001</td>
+                        <td>Sujiman</td>
+                        <td>08112233445566</td>
+                        <td>4</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>AD001</td>
+                        <td>Sujiman</td>
+                        <td>08112233445566</td>
+                        <td>4</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>AD001</td>
+                        <td>Sujiman</td>
+                        <td>08112233445566</td>
+                        <td>4</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>AD001</td>
+                        <td>Sujiman</td>
+                        <td>08112233445566</td>
+                        <td>4</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!--
+                <label for="entries-per-page">Entries per page:</label>
+                    <select id="entries-per-page" onchange="changeEntriesPerPage()">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                         Tambahkan opsi lain sesuai kebutuhan -->
+                    </select>
+
+                </div>
+
+            </div>
+        </div><!-- End list auditor -->
+
         <div class="col-10 border-start">
             <div class="container-fluid">
                 <h1 class="fw-bold mt-3">

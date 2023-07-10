@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 
 /*
@@ -26,10 +27,6 @@ Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logou
 
 
 Route::group(['middleware' => ['role:admin']], function () {
-
-    //    tambah periode
-    Route::post('/tambahPeriodeAudit', [App\Http\Controllers\AdminController::class, 'tambahPeriodeAudit'])->name('tambahPeriodeAudit');
-    Route::get('/pageTambahPeriodeAudit', [App\Http\Controllers\AdminController::class, 'pageTambahPeriodeAudit'])->name('pageTambahPeriodeAudit');
 
     //    tambahauditee
     Route::post('/tambahAuditee', [App\Http\Controllers\AdminController::class, 'tambahAuditee'])->name('tambahAuditee');

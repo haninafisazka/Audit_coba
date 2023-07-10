@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\DataPendahuluan;
 use App\Models\Grade;
 use App\Models\GradeStoring;
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 use mysql_xdevapi\Table;
 use Spatie\Permission\Models\Role;
 use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
+use Illuminate\Auth\Access;
 
 class AuditorController extends Controller
 {
