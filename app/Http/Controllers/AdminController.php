@@ -15,16 +15,16 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Standart $standart)
+    public function index(Standart $periode)
     {
 
 //        $standart = DB::table('standarts')
 //            ->select(DB::raw('DATE_FORMAT(created_at,"%Y") as created_at, id, user_id, type, name'))
 //            ->get();
 
-        $standart = Standart::with(['questions'])->get();
+        $periode = User::role(['admin'])->get();
 
-        return view('admin.dashboard', compact('standart'));
+        return view('admin.dashboard', compact('periode'));
     }
 
     public function pageTambahPeriodeAudit()
@@ -60,21 +60,21 @@ class AdminController extends Controller
     public function tambahPeriodeAudit(Request $request)
     {
         $request->validate([
-            'name'              =>      'required|string|max:30',
-            'fakultas'          =>      'required|string',
-            'prodi'             =>      'required|string',
-            'email'             =>      'required|email|unique:users,email',
-            'password'          =>      'required|alpha_num|min:6',
+            'tanggal'              =>      'required|string|max:30',
+            'no_sk'                =>      'required|string',
+            'ketua_spi'            =>      'required|string',
+            'nip_ketua'            =>      'required|string',
+            'keterangan'           =>      'required|string',
         ]);
 
 //        dd($request->all());
 
         $user = User::create([
-            'name' => ucwords($request['name']),
-            'fakultas' => ucwords($request['fakultas']),
-            'prodi' => ucwords($request['prodi']),
-            'email' => $request['email'],
-            'password' => bcrypt($request['password'])
+            'tanggal' => ucwords($request['tanggal']),
+            'no_sk' => ucwords($request['no_sk']),
+            'ketua_spi' => ucwords($request['ketua_spi']),
+            'nip_ketua' => ucwords($request['nip_ketua']),
+            'keterangan' => ucwords($request['keterangan'])
         ]);
 
         $user->assignRole('admin');
