@@ -96,33 +96,45 @@
                 <hr>
                 <div class="card mt-4 mb-3">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('tambahPeriodeAudit') }}">
+                        <form method="POST" action="{{ route('tambahPeriodeAudit') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row mt-3 mb-3">
-                                <label for="tanggal" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal') }}</label>
+                                <label for="tanggal_awal_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Awal Audit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="tanggal" type="text" class="form-control  @error('tanggal') is-invalid @enderror" name="tanggal" value="{{ old('tanggal') }}" required autocomplete="tanggal" autofocus>
-
-                                    @error('tanggal')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <input type="date" class="form-control" name="tanggal_awal_audit" autofocus required>
                                 </div>
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="no_sk" class="col-md-4 col-form-label text-md-right">{{ __('Nomor SK') }}</label>
+                                <label for="tanggal_akhir_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Akhir Audit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="no_sk" type="text" class="form-control  @error('no_sk') is-invalid @enderror" name="no_sk" value="{{ old('no_sk') }}" required autocomplete="no_sk" autofocus>
+                                    <input type="date" class="form-control" name="tanggal_akhir_audit" autofocus required>
+                                </div>
+                            </div>
 
-                                    @error('no_sk')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="no_sk_tugas_audit" class="col-md-4 col-form-label text-md-right">{{ __('Nomor SK Tugas Audit') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="no_sk_tugas_audit" type="text" class="form-control" name="no_sk_tugas_audit" autofocus required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="file_sk" class="col-md-4 col-form-label text-md-right">{{ __('File SK') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="file" class="form-control" name="file_sk" autofocus required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="tanggal_sk" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal SK') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control" name="tanggal_sk" autofocus required>
                                 </div>
                             </div>
 
@@ -130,45 +142,15 @@
                                 <label for="ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('Ketua SPI') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="ketua_spi" type="ketua_spi" class="form-control @error('ketua_spi') is-invalid @enderror" name="ketua_spi" value="{{ old('ketua_spi') }}" required autocomplete="ketua_spi" autofocus>
-
-                                    @error('ketua_spi')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <input id="ketua_spi" type="text" class="form-control" name="ketua_spi" required autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="nip_ketua" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua') }}</label>
+                                <label for="nip_ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua SPI') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="nip_ketua" type="nip_ketua" class="form-control @error('nip_ketua') is-invalid @enderror" name="nip_ketua" value="{{ old('nip_ketua') }}" required autocomplete="nip_ketua" autofocus>
-
-                                    @error('nip_ketua')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="keterangan" class="col-md-4 col-form-label text-md-right">{{ __('Keterangan') }}</label>
-
-                                <div class="col-md-6">
-                                    <select id="opt-keterangan" name="keterangan" class="form-select keterangan  @error('keterangan') is-invalid @enderror" >
-                                        <option></option>
-                                        <option class="Belum teraudit" value="Belum teraudit">Belum teraudit</option>
-                                        <option class="Teraudit" value="Teraudit">Teraudit</option>
-                                    </select>
-
-                                    @error('keterangan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <input id="nip_ketua_spi" type="text" class="form-control" name="nip_ketua_spi" required autofocus>
                                 </div>
                             </div>
 
