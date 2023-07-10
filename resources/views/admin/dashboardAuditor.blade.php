@@ -82,11 +82,11 @@
                 <ul class="list-unstyled ps-0">
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                            Standart
+                            Set Up
                         </button>
                         <div class="collapse" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Data</a></li>
+                                <li><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode Audit</a></li>
                             </ul>
                         </div>
                     </li>

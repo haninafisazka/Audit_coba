@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 
 /*
@@ -26,6 +27,9 @@ Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logou
 
 
 Route::group(['middleware' => ['role:admin']], function () {
+
+    Route::post('/tambahPeriodeAudit', [App\Http\Controllers\AdminController::class, 'tambahPeriodeAudit'])->name('tambahPeriodeAudit');
+    Route::get('/pageTambahPeriodeAudit', [App\Http\Controllers\AdminController::class, 'pageTambahPeriodeAudit'])->name('pageTambahPeriodeAudit');
 
     //    tambahauditee
     Route::post('/tambahAuditee', [App\Http\Controllers\AdminController::class, 'tambahAuditee'])->name('tambahAuditee');
@@ -73,11 +77,17 @@ Route::group(['middleware' => ['role:ketua']], function () {
 
     Route::get('/ketua/dashboard', [App\Http\Controllers\KetuaController::class, 'index'])->name('ketua.dashboard');
 
-    //profile
+    //ListTim
+    Route::get('/ketua/tim', [App\Http\Controllers\KetuaController::class, 'tim'])->name('ketua.tim');
+
+    //ListAuditor
+    Route::get('/ketua/auditor', [App\Http\Controllers\KetuaController::class, 'auditor'])->name('ketua.auditor');
+
+    //Profile
     Route::get('/ketua/profile', [App\Http\Controllers\KetuaController::class, 'profile'])->name('ketua.profile');
 
-    //unitAudit
-    Route::get('/ketua/unitAudit', [App\Http\Controllers\KetuaController::class, 'unitAudit'])->name('ketua.unitAudit');
+    //update profile
+    //Route::post('/ketua/{user}/update/profile', [App\Http\Controllers\AuditeeController::class, 'update']);
 });
 
 Route::group(['middleware' => ['role:auditee']], function () {

@@ -10,6 +10,7 @@ use App\Models\Response;
 use App\Models\Standart;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class KetuaController extends Controller
@@ -23,7 +24,7 @@ class KetuaController extends Controller
     {
         $filter = Carbon::now()->format('Y');
 
-        $uid = \Auth::id();
+        $uid = Auth::id();
         $standart = Standart::with(['responses' => function($q) use($uid) {
             // Query the name field in status table
             $q->where('user_id', '=', $uid)->whereYear('created_at','=', Carbon::now()->format('Y'));
@@ -44,14 +45,25 @@ class KetuaController extends Controller
 
     public function profile()
     {
-        return view('ketua.profile.profile');
+        return view('ketua.profile');
     }
+    
+    public function auditor()
+    {
+        return view('ketua.auditor');
+    }
+
+    public function tim()
+    {
+        return view('ketua.tim');
+    }
+
 
 
     public function grade()
     {
         $filter = Carbon::now()->format('Y');
-        $uid = \Auth::id();
+        $uid = Auth::id();
         $standart = Standart::with(['responses' => function($q) use($uid) {
             // Query the name field in status table
             $q->where('user_id', '=', $uid)->whereYear('created_at','=', Carbon::now()->format('Y'));
@@ -69,7 +81,7 @@ class KetuaController extends Controller
     {
         $filter=$request['filter'];
 
-        $uid = \Auth::id();
+        $uid = Auth::id();
 
         $standart = Standart::with(['responses' => function($q) use($uid, $filter) {
             // Query the name field in status table
@@ -88,7 +100,7 @@ class KetuaController extends Controller
     public function auditeeGrade($id, $year)
     {
 
-        $uid = \Auth::id();
+        $uid = Auth::id();
 
         $gradeAuditee = GradeStoring::where('standart_id', '=', $id)
             ->whereYear('created_at','=', $year)
@@ -132,7 +144,7 @@ class KetuaController extends Controller
     {
         $filter=$request['filter'];
 
-        $uid = \Auth::id();
+        $uid = Auth::id();
 
         $standart = Standart::with(['responses' => function($q) use($uid,$filter) {
             // Query the name field in status table

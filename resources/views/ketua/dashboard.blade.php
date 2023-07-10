@@ -39,17 +39,17 @@
         var form = event.target.form; // storing the form
 
         swal.fire({
-                icon: "warning",
-                title: "Hapus Data?",
-                text: "Data yang telah terhapus tidak dapat dikembalikan",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Hapus data",
-                cancelButtonText: "Batal",
-                closeOnConfirm: false,
-                closeOnCancel: false
-            }).then((result) => {
+            icon: "warning",
+            title: "Hapus Data?",
+            text: "Data yang telah terhapus tidak dapat dikembalikan",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Hapus data",
+            cancelButtonText: "Batal",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        }).then((result) => {
             if (result.isConfirmed) {
                 form.submit();
 
@@ -64,226 +64,457 @@
             }
         })
 
-            // function(isConfirm){
-            //     if (isConfirm) {
-            //         form.submit();          // submitting the form when user press yes
-            //     } else {
-            //         Swal.fire(
-            //             'The Internet?',
-            //             'That thing is still around?',
-            //             'question'
-            //         );
-            //     }
-            // });
+        // function(isConfirm){
+        //     if (isConfirm) {
+        //         form.submit();          // submitting the form when user press yes
+        //     } else {
+        //         Swal.fire(
+        //             'The Internet?',
+        //             'That thing is still around?',
+        //             'question'
+        //         );
+        //     }
+        // });
     }
+
+
+    $(document).ready(function () {
+        @if (count($errors) > 0)
+        $('#modalPendahuluan').modal('show');
+        @endif
+    });
 </script>
 
-<!--
-{{--modal--}}
-<form action="{{route('tambahStandart')}}" method="post">
-    @csrf
-    <div class="modal fade" id="tambah-standart-modal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-         tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">Masukkan Nama Standart</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input name="name" class="form-control form-control" type="text" id="keteranganHelp"
-                           placeholder="Contoh : Standart Kompetensi" aria-label="keteranganHelp" required>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#next"
-                            data-bs-toggle="modal" data-bs-dismiss="modal">Lanjut
-                    </button>
-                </div>
+<!-- Modal -->
+{{-- <div class="modal fade" id="modalPendahuluan" tabindex="-1" aria-labelledby="modalPendahuluan" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-capitalize" id="modalPendahuluan">Isi data pendahuluan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-        </div>
-    </div>
-    <div class="modal fade" id="next" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-         tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel2">Pilih Jenis standart</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+            <form action="/ketua/{{ auth()->id() }}/dataPendahuluan" method="post">
+                @csrf
                 <div class="modal-body">
-                    <div class="d-flex justify-content-evenly">
-                        <button name="type" type="submit" class="btn btn-outline-success btn-lg"
-                                value="Likert">Skala Likert
-                        </button>
-                        <button name="type" type="submit" class="btn btn-outline-primary btn-lg"
-                                value="Ya/Tidak">Sesuai / Tidak Sesuai
-                        </button>
+                    <div class="mb-3 row">
+                        <label for="kepala_prodi" class="col-sm-5 col-form-label">Kepala Prodi</label>
+                        <div class="col-1"> :</div>
+                        <div class="col-sm-6">
+                            <input type="text" name="kepala_prodi" class="form-control @error('kepala_prodi') is-invalid @enderror" id="kepala_prodi">
+                            @error('kepala_prodi')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="name" class="col-sm-5 col-form-label">Nama Pengisi</label>
+                        <div class="col-1"> :</div>
+                        <div class="col-sm-6">
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name">
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="dosen_aktif" class="col-sm-5 col-form-label">Jumlah Dosen Aktif</label>
+                        <div class="col-1"> :</div>
+                        <div class="col-sm-6">
+                            <input type="number" name="dosen_aktif" class="form-control @error('dosen_aktif') is-invalid @enderror" id="dosen_aktif">
+                            @error('dosen_aktif')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="mahasiswa_aktif" class="col-sm-5 col-form-label">Jumlah Mahasiswa Aktif</label>
+                        <div class="col-1"> :</div>
+                        <div class="col-sm-6">
+                            <input type="number" name="mahasiswa_aktif" class="form-control @error('mahasiswa_aktif') is-invalid @enderror" id="mahasiswa_aktif">
+                            @error('mahasiswa_aktif')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="total_penelitian" class="col-sm-5 col-form-label">Jumlah Penelitian Dosen</label>
+                        <div class="col-1"> :</div>
+                        <div class="col-sm-6">
+                            <input type="number" name="total_penelitian" class="form-control @error('total_penelitian') is-invalid @enderror" id="total_penelitian">
+                            @error('total_penelitian')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="total_pengabdian" class="col-sm-5 col-form-label">Jumlah Pengabdian Dosen</label>
+                        <div class="col-1"> :</div>
+                        <div class="col-sm-6">
+                            <input type="number" name="total_pengabdian" class="form-control @error('total_pengabdian') is-invalid @enderror" id="total_pengabdian">
+                            @error('total_pengabdian')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="jumlah_kerjasama" class="col-sm-5 col-form-label">Jumlah Kerja Sama</label>
+                        <div class="col-1"> :</div>
+                        <div class="col-sm-6">
+                            <input type="number" name="jumlah_kerjasama" class="form-control @error('jumlah_kerjasama') is-invalid @enderror" id="jumlah_kerjasama">
+                            @error('jumlah_kerjasama')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
+            </form>
         </div>
     </div>
-</form>
--->
+</div> --}}
 
-
+{{--container--}}
 <div class="container-fluid">
-    <div class="row pt-3">
-        <div class="col">
+    <div class="row mt-3">
+        <div class="col-2 border-end">
             <div id="side-bar" class="ps-3 pt-3 bg-white overflow-auto" style="width: 180px;">
                 <ul class="list-unstyled ps-0">
                     <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#dashboard-collapse" aria-expanded="false">
-                            Unit Audit
-                        </button>
-                        <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('admin.dashboardAuditee')}}" class="link-dark rounded">Data</a>
-                                </li>
-                                <li><a href="{{route('pageTambahAuditee')}}" class="link-dark rounded">Tambah
-                                        Unit</a></li>
-                            </ul>
-                        </div>
+                        <a class="btn btn-toggle align-items-center rounded" href="{{ route('ketua.tim') }}">
+                            Daftar Tim
+                        </a>
                     </li>
                     <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#home-collapse" aria-expanded="true">
-                            Profile
-                        </button>
-                        <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('ketua.profile')}}" class="link-dark rounded"></a>
-                                </li>
-                            </ul>
-                        </div>
+                        <a class="btn btn-toggle align-items-center rounded" href="{{ route('ketua.auditor') }}">
+                            Auditor
+                        </a>
                     </li>
-                    <!--
-{{--                    <li class="border-top my-3"></li>--}}
-{{--                    <li class="mb-1">--}}
-{{--                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"--}}
-{{--                                data-bs-target="#account-collapse" aria-expanded="false">--}}
-{{--                            Pengumuman--}}
-{{--                        </button>--}}
-{{--                        <div class="collapse" id="account-collapse">--}}
-{{--                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">--}}
-{{--                                <li><a href="#" class="link-dark rounded">Data</a></li>--}}
-{{--                                <li><a href="#" class="link-dark rounded">Tambah Pengumuman</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
-{{--                    </li>--}}
--->
                 </ul>
             </div>
         </div>
-        <div class="col-10 border-start">
-            <div class="container-fluid">
-                <h1 class="fw-bold mt-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                         class="bi bi-card-list" viewBox="0 1 16 16">
-                        <path
-                            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                        <path
-                            d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
-                    </svg>
-                    DAFTAR STANDART
-                </h1>
-                <hr>
-                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#tambah-standart-modal">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-                         class="bi bi-card-checklist" viewBox="0 1 16 16">
-                        <path
-                            d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                        <path
-                            d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
-                    </svg>
-                    <span>Tambah Standart</span>
-                </button>
-                <div class="card mb-5 mt-2" id="card-standart">
+        <div class="col">
+            <h2 class="text-center">Sistem Audit Internal</h2>
+            <hr>
+            <!-- Recent Sales -->
+            <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+
+        
+
+                <div class="card-body">
+
+                <table id="table_standart" class="table table-striped text-center table-bordered">
+                    <thead>
+                    <tr class="border-bottom">
+                        <th scope="col">Tim</th>
+                        <th scope="col">Prodi</th>
+                        <th scope="col">Fakultas</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                    </thead>    
+<!--        
+                    <div class="search-container">
+                
+        <div class="new-column">+ New</div>
+        <form id="search-form" onsubmit="search(event)">
+            <input type="text" id="search-input" placeholder="Search...">
+        </form>
+        </div>
+
+        <style>
+        .search-container {
+            display: flex;
+            justify-content: space-between; /* Menempatkan elemen di antara tepi kanan dan kiri */
+            align-items: center;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            margin-left: 9px;
+            margin-right: 15px;
+        }
+
+        .new-column {
+            background-color: green;
+            color: white;
+            padding: 4px;
+            width: 7%;
+            border-radius: 3px;
+            /* text: center; */
+        }
+        </style>
+
+    -->
+
+                    <tbody>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>1</a></th>
+                        <td>Informatika</td>
+                        <td>Teknologi Informasi dan Sains Data</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>2</a></th>
+                        <td>Arsitektur</td>
+                        <td>Teknik</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>3</a></th>
+                        <td>Kedokteran</td>
+                        <td>Kedokteran</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>4</a></th>
+                        <td>Matematika</td>
+                        <td>Matematika dan Ilmu Pengetahuan Alam</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>5</a></th>
+                        <td>Ekonomi</td>
+                        <td>Ekonomi dan Bisnis</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>6</a></th>
+                        <td>Agroteknologi</td>
+                        <td>Pertanian</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>7</a></th>
+                        <td>Seni Rupa</td>
+                        <td>Seni Rupa dan Desain</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>8</a></th>
+                        <td>Sains Data</td>
+                        <td>Teknologi Informasi dan Sains Data</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="border-bottom">
+                        <th scope="row"><a>9</a></th>
+                        <td>Hukum</td>
+                        <td>Hukum</td>
+                        <td>Active</td>
+                        <td>
+                            <a href="/edit" class="btn btn-primary">Edit</a>
+                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!--
+                <label for="entries-per-page">Entries per page:</label>
+                    <select id="entries-per-page" onchange="changeEntriesPerPage()">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                         Tambahkan opsi lain sesuai kebutuhan -->
+                    </select>
+
+                </div>
+
+            </div>
+            </div><!-- End Recent Sales -->
+            <!--
+            <div class="card mb-3 p-2">
+                <div class="tab-pane fade show active" id="format_soal" role="tabpanel" aria-labelledby="format_soal-tab">
                     <div class="card-body">
-                        <table id="table_standart" class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Standart</th>
-                                <th>Tahun</th>
-                                <th>Jenis Respon</th>
-                                <th>Jumlah Pertanyaan</th>
-                                <th>Aksi</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($standart as $v)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td class="text-capitalize">{{ $v->name }}</td>
-                                    <td>{{ $v->created_at->format('Y') }}</td>
-                                    <td class="text-capitalize">
-                                        @if($v->type == 'Likert')
-                                        Likert
-                                        @else
-                                        Sesuai/Tidak Sesuai
-                                        @endif
-                                    </td>
-                                    @if(!$v->questions->count())
-                                        <td style="width: 15%">
-                                            <span type="button" class="badge rounded-pill bg-danger tips"
-                                                  data-bs-toggle="popover" title="Anda masih belum memasukkan pertanyaan
-                                                    pada standart ini.">
-                                                Kosong
-                                            </span>
-                                            <a href="/standarts/{{ $v->id }}">
-                                                <span type="button" class="badge rounded-pill bg-warning text-dark">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-pencil-square" viewBox="0 1 16 16">
-                                                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                      <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                    </svg>
-                                                    Isi Data
-                                                </span>
-                                            </a>
-                                        </td>
-                                    @else
+                        <div class="table-container">
+                            <table class="table" id="daftarSoal">
+                                <thead class="bg-secondary text-white">
+                                    <tr>
+                                        <th>Upload Setup File (??)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
                                         <td>
-                                            <span type="button" class="badge rounded-pill bg-success tips" style="width: 25%"
-                                                  data-bs-toggle="popover" title="Data telah terisi oleh pertanyaan">
-                                                {{ $v->questions->count() }}
-                                            </span>
+                                            Parameter<br>
+                                            <textarea rows="3" style="width:100%; resize:none;" name="parameter"></textarea>
                                         </td>
-                                    @endif
-                                    <td class="text-center">
-                                        <form action="/standarts/{{ $v->id }}" method="post">
-                                            @csrf
-                                            @method('GET')
-                                            <a href="/standarts/{{ $v->id }}/edit"><button type="button" class="btn btn-outline-warning btn-sm">Edit</button></a>
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-outline-danger btn-sm" onclick="deleteFunction()">Hapus</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Upload File<br>
+                                            <input type="file" name="setup_file" id="setup_file" required>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
+\
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#kirimsetupfile">Submit</button>
+            -->
+            {{-- <div class="card mb-3 p-2">
+                <div class="body">
+                    <div class="d-flex flex-row bd-highlight">
+                        <div class="p-2 bd-highlight">Data pendahuluan : </div>
+                        <div class="p-2 bd-highlight">
+                                @if($check->isEmpty())
+                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalPendahuluan">Isi data</button>
+                                @else
+                                    <span class="badge bg-success">
+                                        Data Terisi
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" fill="currentColor" class="bi bi-check-lg ms-1 " viewBox="0 0 16 16">
+                                            <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                                        </svg>
+                                    </span>
+                                @endif
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            {{-- <div class="card p-3">
+                <form action="/auditee/filter" method="post">
+                    @csrf
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <div class="p-2 bd-highlight">
+                            <button type="submit" class="btn btn-sm btn-success">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-search mb-1" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                            <select class="form-select form-select-sm" name="filter" aria-label="Default select example">
+                                <option selected> --Pilih Tahun-- </option>
+                                @for ($year=2021; $year<=date('Y'); $year++)
+                                    <option value="{{ $year }}">{{ $year }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                          Filter Tahun:
+                        </div>
+                    </div>
+                </form>
+                <table id="table_standart" class="table table-striped text-center table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Standart</th>
+                        <th>Keterangan</th>
+                        <th>Tahun</th>
+                        <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach( $standart as $v )
+                            @if(!$v->responses->isEmpty())
+                                <tr>
+                                    <td>Standart {{ $loop->iteration }}</td>
+                                    <td>{{ $v->name }}</td>
+                                    <td>{{ $v->created_at->format('Y') }}</td>
+                                    <td>
+                                        <span class="badge bg-success">Terisi</span>
+                                        <a href="/auditee/{{ $v->id }}/{{ $filter }}/grade"><span class="badge bg-primary">Cek Nilai</span></a>
+                                    </td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td>Standart {{ $loop->iteration }}</td>
+                                    <td>{{ $v->name }}</td>
+                                    <td>{{ $v->created_at->format('Y') }}</td>
+                                    <td style="width:15%" class="text-center">
+                                        @if($check->isEmpty() || auth()->user()->fakultas == null || auth()->user()->prodi == null)
+                                            <button class="btn btn-outline-success btn-sm" onclick="responseFunction()">Isi standart</button>
+                                        @else
+                                            <a href="/auditee/{{ $v->id }}/respons/"><button class="btn btn-outline-success btn-sm">Isi standart</button></a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endif
+                    @endforeach
+                    </tbody>
+                </table>
+            </div> --}}
+
         </div>
     </div>
+    {{-- @if(auth()->user()->fakultas == null || auth()->user()->prodi == null)
+        <div class="alert alert-warning alert-dismissible fade show mt-alerts mt-4" role="alert">
+            <strong>Peringatan!</strong> Anda belum mengisi data profil yang diperlukan <a href="{{ route('auditee.profile') }}" class="alert-link">disini</a>.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @else
+    @endif --}}
 </div>
-
 
 @include('layouts.footer')
 
 <script>
 
+    // function responseFunction() {
+    //     event.preventDefault(); // prevent form submit
+
+    //     Swal.fire({
+    //         icon: 'error',
+    //         title: 'Aksi Dilarang',
+    //         text: 'Anda Belum mengisikan Data Pendahuluan / Data profil yang diperlukan',
+    //     })
+
+    // }
+
     $(document).ready(function () {
         $('#table_standart').DataTable();
-        $('#table_auditee').DataTable();
-        $('#table_auditor').DataTable();
-        $('#table_news').DataTable();
     });
 </script>
-
 
 @include('layouts.global-script')
 </body>

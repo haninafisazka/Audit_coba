@@ -15,18 +15,22 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Standart $standart)
+    public function index(Standart $periode)
     {
 
 //        $standart = DB::table('standarts')
 //            ->select(DB::raw('DATE_FORMAT(created_at,"%Y") as created_at, id, user_id, type, name'))
 //            ->get();
 
-        $standart = Standart::with(['questions'])->get();
+        $periode = User::role(['admin'])->get();
 
-        return view('admin.dashboard', compact('standart'));
+        return view('admin.dashboard', compact('periode'));
     }
 
+    public function pageTambahPeriodeAudit()
+    {
+        return view('admin.tambahPeriodeAudit');
+    }
 
     public function pageTambahAuditee()
     {
@@ -51,6 +55,37 @@ class AdminController extends Controller
         $userAuditor = User::role('auditor')->get();
 
         return view('admin.dashboardAuditor', compact('userAuditor'));
+    }
+
+    public function tambahPeriodeAudit(Request $request)
+    {
+        $request->validate([
+            'tanggal'              =>      'required|string|max:30',
+            'no_sk'                =>      'required|string',
+            'ketua_spi'            =>      'required|string',
+            'nip_ketua'            =>      'required|string',
+            'keterangan'           =>      'required|string',
+        ]);
+
+//        dd($request->all());
+
+        $user = User::create([
+            'tanggal' => ucwords($request['tanggal']),
+            'no_sk' => ucwords($request['no_sk']),
+            'ketua_spi' => ucwords($request['ketua_spi']),
+            'nip_ketua' => ucwords($request['nip_ketua']),
+            'keterangan' => ucwords($request['keterangan'])
+        ]);
+
+        $user->assignRole('admin');
+
+        if(!is_null($user)) {
+            return redirect()->route('admin.dashboard')->with("success", "Berhasil Tambah");
+        }
+        else {
+            return back()->with("error", "Proses Gagal");
+        }
+
     }
 
     public function tambahAuditee(Request $request)
