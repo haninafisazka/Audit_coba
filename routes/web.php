@@ -150,6 +150,20 @@ Route::group(['middleware' => ['role:auditor']], function () {
     //updateprofile
     Route::post('/auditor/{user}/update/profile', [App\Http\Controllers\AuditorController::class, 'update']);
 
+
+    //setup
+    Route::get('/auditor/setup', [App\Http\Controllers\AuditorController::class, 'setup'])->name('auditor.setup');
+
+    //tindakan
+    Route::get('/auditor/tindakan', [App\Http\Controllers\AuditorController::class, 'tindakan'])->name('auditor.tindakan');
+
+    //standar
+    Route::get('/auditor/standar', [App\Http\Controllers\AuditorController::class, 'standar'])->name('auditor.standar');
+
+
+
+
+
     //    tambahstandart
     Route::post('/tambahStandart', [App\Http\Controllers\StandartController::class, 'create'])->name('tambahStandart');
     Route::get('/standarts/{standart}', [App\Http\Controllers\StandartController::class, 'show']);

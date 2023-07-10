@@ -109,14 +109,43 @@
                     {{--                        </div>--}}
                     {{--                    </li>--}}
 
+                    
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#profile-collapse" aria-expanded="false">
-                            <span>User</span>
+                            <span>Standar</span>
+                        </button>
+                        <div class="collapse" id="profile-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="{{ route('auditor.standar') }}" class="link-dark rounded">Ruang Lingkup</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#profile-collapse" aria-expanded="false">
+                            <span>Setup</span>
                         </button>
                         <div class="collapse show" id="profile-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li class="fw-bold"><a href="{{ route('auditor.profile') }}" class="link-dark rounded">Profile</a></li>
+                                <li class="fw-bold"><a href="{{ route('auditor.setup') }}" class="link-dark rounded">Setup File</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#profile-collapse" aria-expanded="false">
+                            <span>Evaluasir</span>
+                        </button>
+                        <div class="collapse show" id="profile-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li class="fw-bold"><a href="{{ route('auditor.tindakan') }}" class="link-dark rounded">Evaluasi</a></li>
                             </ul>
                         </div>
                     </li>
@@ -124,62 +153,98 @@
             </div>
         </div>
         <div class="col">
-            <h2 class="text-center">Ganti Password</h2>
+            <h2 class="text-center">File Yang Harus Diunggah</h2>
             <hr>
             <div class="card p-3">
                 <form method="POST" action="/auditor/change_password">
                     @csrf
-                    <div class="form-group row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Password Saat ini</label>
+                    <!-- <div class="form-group row mb-3">
+                        <label for="password" class="col-md-0 col-form-label text-md-right">File 1</label>
 
                         <div class="col-md-6">
-                            <input id="password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" autocomplete="current-password">
-                            @error('current_password')
-                            <div id="description" class="invalid-feedback">
+                        <input type="file" name="setup_file" id="setup_file" required>
+                        </div> 
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label for="password" class="col-md-0 col-form-label text-md-right">File 2</label>
+
+                        <div class="col-md-6">
+                        <input type="file" name="setup_file" id="setup_file" required>
+                        </div> 
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <label for="password" class="col-md-0 col-form-label text-md-right">File 3</label>
+
+                        <div class="col-md-6">
+                        <input type="file" name="setup_file" id="setup_file" required>
+                        </div> 
+                    </div> -->
+
+
+                    <div class="row pt-3 mb-3">
+                        <div class="col-auto">Unggah File :</div>
+                        <div class="col-7">
+                            <input class="form-control form-control-sm @error('files_link') is-invalid @enderror" name="files_link" type="text"
+                                   placeholder="Link google drive" aria-describedby="files_link" value="{{ old('files_link') }}">
+                            @error('files_link')
+                            <div id="files_link" class="invalid-feedback">
                                 {{$message}}
                             </div>
                             @enderror
                         </div>
                     </div>
 
-                    <div class="form-group row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Password Baru</label>
 
-                        <div class="col-md-6">
-                            <input id="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" autocomplete="current-password">
-                            @error('new_password')
-                            <div id="description" class="invalid-feedback">
-                                Password wajib diisi
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
 
-                    <div class="form-group row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Konfirmasi Password baru</label>
 
-                        <div class="col-md-6">
-                            <input id="new_confirm_password" type="password" class="form-control @error('new_confirm_password') is-invalid @enderror" name="new_confirm_password" autocomplete="current-password">
-                            @error('new_confirm_password')
-                            <div id="description" class="invalid-feedback">
-                                Password tidak sesuai
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-3">
-                        <div class="col-md-8 offset-md-4">
+                    <div class="form-group row mt-2 mb-3">
+                        <div class="col-md-0 offset-md-0">
                             <button type="submit" class="btn btn-primary">
-                                Update Password
+                                Submit
                             </button>
                         </div>
                     </div>
                 </form>
+
+
+                <!-- <div class="tab-pane fade show active" id="format_soal" role="tabpanel" aria-labelledby="format_soal-tab">
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table" id="daftarSoal">
+                                <thead class="bg-secondary text-white">
+                                    <tr>
+                                        <th>Upload Setup File (??)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Parameter<br>
+                                            <textarea rows="3" style="width:100%; resize:none;" name="parameter"></textarea>
+                                        </td>
+                                    </tr>
+                                    <<tr>
+                                        <td>
+                                            Upload File<br>
+                                            <input type="file" name="setup_file" id="setup_file" required>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+ -->
+
+                
             </div>
         </div>
     </div>
 </div>
+
+
 
 @include('layouts.footer')
 
