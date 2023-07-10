@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use App\Models\Standart;
+use App\Models\UnitAudit;
 use Illuminate\Support\Facades\DB;
 use app\Models\User;
 use Illuminate\Http\Request;
@@ -41,6 +42,13 @@ class AdminController extends Controller
     public function pageTambahAuditor()
     {
         return view('admin.tambahAuditor');
+    }
+
+    public function dashboardUnitAudit(UnitAudit $unitAudit)
+    {
+        $unitAudit = User::role(['admin'])->get();
+
+        return view('admin.dashboardUnitAudit', compact('unitAudit'));
     }
 
     public function dashboardAuditee()

@@ -44,6 +44,10 @@
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li class="fw-bold"><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode</a></li>
                             </ul>
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="{{route('admin.dashboardUnitAudit')}}" class="link-dark rounded">Unit Audit</a>
+                                </li>
+                            </ul>
                         </div>
                     </li>
                     <li class="mb-1">

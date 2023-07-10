@@ -68,6 +68,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     //    dashboard
     Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/dashboardUnitAudit', [App\Http\Controllers\AdminController::class, 'dashboardUnitAudit'])->name('admin.dashboardUnitAudit');
     Route::get('/admin/dashboardAuditee', [App\Http\Controllers\AdminController::class, 'dashboardAuditee'])->name('admin.dashboardAuditee');
     Route::get('/admin/dashboardAuditor', [App\Http\Controllers\AdminController::class, 'dashboardAuditor'])->name('admin.dashboardAuditor');
 
