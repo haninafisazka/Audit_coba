@@ -43,7 +43,7 @@
                         <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li class="fw-bold"><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode</a></li>
-                                <li class=""><a href="{{route('admin.daftarUnit')}}" class="link-dark rounded">Unit Audit</a>
+                                <li class=""><a href="{{route('daftarUnit')}}" class="link-dark rounded">Unit Audit</a>
                                 </li>
                             </ul>
                         </div>
