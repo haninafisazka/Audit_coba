@@ -80,52 +80,6 @@
 
 
 {{--modal--}}
-<form action="{{route('tambahStandart')}}" method="post">
-    @csrf
-    <div class="modal fade" id="tambah-standart-modal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-         tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">Masukkan Nama Standart</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input name="name" class="form-control form-control" type="text" id="keteranganHelp"
-                           placeholder="Contoh : Standart Kompetensi" aria-label="keteranganHelp" required>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#next"
-                            data-bs-toggle="modal" data-bs-dismiss="modal">Lanjut
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="next" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-         tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel2">Pilih Jenis standart</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="d-flex justify-content-evenly">
-                        <button name="type" type="submit" class="btn btn-outline-success btn-lg"
-                                value="Likert">Skala Likert
-                        </button>
-                        <button name="type" type="submit" class="btn btn-outline-primary btn-lg"
-                                value="Ya/Tidak">Sesuai / Tidak Sesuai
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-
 <div class="container-fluid">
     <div class="row pt-3">
         <div class="col">
@@ -138,13 +92,11 @@
                         </button>
                         <div class="collapse  show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li class="fw-bold"><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode Audit</a>
-                                </li>
-                                <li><a href="{{route('daftarUnit')}}" class="link-dark rounded">Unit Audit</a>
+                                <li><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode Audit</a>
                                 </li>
                             </ul>
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('admin.dashboardUnitAudit')}}" class="link-dark rounded">Unit Audit</a>
+                                <li class="fw-bold"><a href="{{route('admin.dashboardUnitAudit')}}" class="link-dark rounded">Unit Audit</a>
                                 </li>
                             </ul>
                         </div>
@@ -203,10 +155,10 @@
                         <path
                             d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
                     </svg>
-                    DAFTAR PERIODE
+                    DAFTAR UNIT
                 </h1>
                 <hr>
-                <a href="{{route('pageTambahPeriodeAudit')}}">
+                <a href="{{route('pageTambahUnitAudit')}}">
                     <button type="button" class="btn btn-outline-secondary btn-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                              class="bi bi-person-plus-fill" viewBox="0 1 16 16">
@@ -214,45 +166,36 @@
                             <path fill-rule="evenodd"
                                   d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
                         </svg>
-                        <span>Tambah Periode</span>
+                        <span>Tambah Unit</span>
                     </button>
                 </a>
-                <div class="card mb-5 mt-2" id="card-periode">
+                <div class="card mb-5 mt-2" id="card-unitAudit">
                     <div class="card-body">
-                        <table id="table_periode" class="table table-striped">
+                        <table id="table_unitAudit" class="table table-striped">
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Tanggal Awal</th>
-                                <th>Tanggal Akhir</th>
-                                <th>No SK</th>
-                                <th>File SK</th>
-                                <th>Tanggal SK</th>
-                                <th>Ketua SPI</th>
-                                <th>NIP Ketua SPI</th>
+                                <th>Nama_Unit</th>
+                                <th>Tanggal_Audit</th>
+                                <th>No_SK</th>
+                                <th>Ketua_Unit</th>
+                                <th>NIP_Ketua_Unit</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($periodeAudit as $v)
+                            @foreach($unitAudit as $v)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$v->tanggal_awal_audit}}</td>
-                                    <td>{{$v->tanggal_akhir_audit}}</td>
-                                    <td>{{$v->no_sk_tugas_audit}}</td>
-                                    <td>{{$v->file_sk}}</td>
-                                    <td>{{$v->tanggal_sk}}</td>
-                                    <td>{{$v->ketua_spi}}</td>
-                                    <td>{{$v->nip_ketua_spi}}</td>
+                                    <td>{{$v->Nama_Unit}}</td>
+                                    <td>{{$v->Tanggal_Audit}}</td>
+                                    <td>{{$v->No_SK}}</td>
+                                    <td>{{$v->Ketua_Tim}}</td>
+                                    <td>{{$v->NIP_Ketua_Tim}}</td>
                                     <td class="text-center list-inline">
                                         <div class="d-inline-flex bd-highlight">
-<<<<<<< HEAD
-                                        <form id="form" class="delete-form" action="{{ route('destroy',$v->id) }}"
-                                              method="POST">
-=======
                                             <form id="form" class="delete-form" action="{{ route('destroy',$v->id) }}"
                                                 method="POST">
->>>>>>> 0854e751677c363393de3a7e6c573a99941fc1e1
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger btn-sm" onclick="deleteFunction()">Hapus</button>
@@ -277,6 +220,7 @@
 
     $(document).ready(function () {
         $('#table_periode').DataTable();
+        $('#table_unitAudit').DataTable();
         $('#table_auditee').DataTable();
         $('#table_auditor').DataTable();
         $('#table_news').DataTable();

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use App\Models\Standart;
 use App\Models\PeriodeAudit;
+use App\Models\UnitAudit;
+
 use Illuminate\Support\Facades\DB;
 use app\Models\User;
 use Illuminate\Http\Request;
@@ -34,6 +36,11 @@ class AdminController extends Controller
         return view('admin.tambahPeriodeAudit');
     }
 
+    public function pageTambahUnitAudit()
+    {
+        return view('admin.tambahUnitAudit');
+    }
+
     public function pageTambahAuditee()
     {
         return view('admin.tambahAuditee');
@@ -43,6 +50,13 @@ class AdminController extends Controller
     public function pageTambahAuditor()
     {
         return view('admin.tambahAuditor');
+    }
+
+    public function dashboardUnitAudit(UnitAudit $unitAudit)
+    {
+        $unitAudit = User::role(['admin'])->get();
+
+        return view('admin.dashboardUnitAudit', compact('unitAudit'));
     }
 
     public function dashboardAuditee()
@@ -89,8 +103,40 @@ class AdminController extends Controller
         $periode->tanggal_sk          = $request->input('tanggal_sk');
         $periode->ketua_spi           = $request->input('ketua_spi');
         $periode->nip_ketua_spi       = $request->input('nip_ketua_spi');
+        $periode->nama_unit           = $request->input('nama_unit');
         $periode->save();
-        return redirect()->back();
+        return redirect()->route('admin.dashboard');
+
+    }
+
+    public function tambahUnitAudit(Request $request)
+    {
+        $request->validate([
+            'nama_unit'              =>      'required|string|max:30',
+            'tanggal_audit'          =>      'required|string',
+            'no_sk'                  =>      'required|string',
+            'ketua_unit'             =>      'required|string',
+            'nip_ketua_unit'         =>      'required|string',
+        ]);
+
+//        dd($request->all());
+
+        $user = User::create([
+            'nama_unit' => ucwords($request['nama_unit']),
+            'tanggal_audit' => ucwords($request['tanggal_audit']),
+            'no_sk' => ucwords($request['no_sk']),
+            'ketua_unit' => ucwords($request['ketua_unit']),
+            'nip_ketua_unit' => ucwords($request['nip_ketua_unit'])
+        ]);
+
+        $user->assignRole('admin');
+
+        if(!is_null($user)) {
+            return redirect()->route('admin.dashboardUnitAudit')->with("success", "Berhasil Tambah");
+        }
+        else {
+            return back()->with("error", "Proses Gagal");
+        }
 
     }
 
