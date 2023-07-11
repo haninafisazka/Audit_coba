@@ -42,10 +42,10 @@
                         </button>
                         <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li class="fw-bold"><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode</a></li>
+                                <li><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode</a></li>
                             </ul>
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('admin.dashboardUnitAudit')}}" class="link-dark rounded">Unit Audit</a>
+                                <li class="fw-bold"><a href="{{route('admin.dashboardUnitAudit')}}" class="link-dark rounded">Unit Audit</a>
                                 </li>
                             </ul>
                         </div>
@@ -96,19 +96,19 @@
                         <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                         <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
                     </svg>
-                    TAMBAH PERIODE </h1>
+                    TAMBAH UNIT </h1>
                 <hr>
                 <div class="card mt-4 mb-3">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('tambahPeriodeAudit') }}">
+                        <form method="POST" action="{{ route('tambahUnitAudit') }}">
                             @csrf
                             <div class="form-group row mt-3 mb-3">
-                                <label for="tanggal" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal') }}</label>
+                                <label for="nama_unit" class="col-md-4 col-form-label text-md-right">{{ __('Nama Unit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="tanggal" type="text" class="form-control  @error('tanggal') is-invalid @enderror" name="tanggal" value="{{ old('tanggal') }}" required autocomplete="tanggal" autofocus>
+                                    <input id="nama_unit" type="text" class="form-control  @error('nama_unit') is-invalid @enderror" name="nama_unit" value="{{ old('nama_unit') }}" required autocomplete="nama_unit" autofocus>
 
-                                    @error('tanggal')
+                                    @error('nama_unit')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -117,10 +117,24 @@
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="no_sk" class="col-md-4 col-form-label text-md-right">{{ __('Nomor SK') }}</label>
+                                <label for="tanggal_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Audit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="no_sk" type="text" class="form-control  @error('no_sk') is-invalid @enderror" name="no_sk" value="{{ old('no_sk') }}" required autocomplete="no_sk" autofocus>
+                                    <input id="tanggal_audit" type="text" class="form-control  @error('tanggal_audit') is-invalid @enderror" name="tanggal_audit" value="{{ old('tanggal_audit') }}" required autocomplete="tanggal_audit" autofocus>
+
+                                    @error('tanggal_audit')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="no_sk" class="col-md-4 col-form-label text-md-right">{{ __('No SK') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="no_sk" type="no_sk" class="form-control @error('no_sk') is-invalid @enderror" name="no_sk" value="{{ old('no_sk') }}" required autocomplete="no_sk" autofocus>
 
                                     @error('no_sk')
                                     <span class="invalid-feedback" role="alert">
@@ -131,12 +145,12 @@
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('Ketua SPI') }}</label>
+                                <label for="ketua_unit" class="col-md-4 col-form-label text-md-right">{{ __('Ketua Unit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="ketua_spi" type="ketua_spi" class="form-control @error('ketua_spi') is-invalid @enderror" name="ketua_spi" value="{{ old('ketua_spi') }}" required autocomplete="ketua_spi" autofocus>
+                                    <input id="ketua_unit" type="ketua_unit" class="form-control @error('ketua_unit') is-invalid @enderror" name="ketua_unit" value="{{ old('ketua_unit') }}" required autocomplete="ketua_unit" autofocus>
 
-                                    @error('ketua_spi')
+                                    @error('ketua_unit')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -145,12 +159,12 @@
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="nip_ketua" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua') }}</label>
+                                <label for="nip_ketua_unit" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua Unit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="nip_ketua" type="nip_ketua" class="form-control @error('nip_ketua') is-invalid @enderror" name="nip_ketua" value="{{ old('nip_ketua') }}" required autocomplete="nip_ketua" autofocus>
+                                    <input id="nip_ketua_unit" type="nip_ketua_unit" class="form-control @error('nip_ketua_unit') is-invalid @enderror" name="nip_ketua_unit" value="{{ old('nip_ketua_unit') }}" required autocomplete="nip_ketua_unit" autofocus>
 
-                                    @error('nip_ketua')
+                                    @error('nip_ketua_unit')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -158,23 +172,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="keterangan" class="col-md-4 col-form-label text-md-right">{{ __('Keterangan') }}</label>
-
-                                <div class="col-md-6">
-                                    <select id="opt-keterangan" name="keterangan" class="form-select keterangan  @error('keterangan') is-invalid @enderror" >
-                                        <option></option>
-                                        <option class="Belum teraudit" value="Belum teraudit">Belum teraudit</option>
-                                        <option class="Teraudit" value="Teraudit">Teraudit</option>
-                                    </select>
-
-                                    @error('keterangan')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
