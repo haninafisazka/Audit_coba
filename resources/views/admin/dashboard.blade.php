@@ -221,24 +221,28 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Tanggal</th>
+                                <th>Tanggal Awal</th>
+                                <th>Tanggal Akhir</th>
                                 <th>No SK</th>
+                                <th>File SK</th>
+                                <th>Tanggal SK</th>
                                 <th>Ketua SPI</th>
                                 <th>NIP Ketua SPI</th>
-                                <th>Keterangan</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($periode as $v)
+                            @foreach($periodeAudit as $v)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$v->Tanggal}}</td>
-                                    <td>{{$v->No_SK}}</td>
-                                    <td>{{$v->Ketua_SPI}}</td>
-                                    <td>{{$v->NIP_Ketua_SPI}}</td>
-                                    <td>{{$v->Keterangan}}</td>
-                                    <td style="width:25%" class="text-center list-inline">
+                                    <td>{{$v->tanggal_awal_audit}}</td>
+                                    <td>{{$v->tanggal_akhir_audit}}</td>
+                                    <td>{{$v->no_sk_tugas_audit}}</td>
+                                    <td>{{$v->file_sk}}</td>
+                                    <td>{{$v->tanggal_sk}}</td>
+                                    <td>{{$v->ketua_spi}}</td>
+                                    <td>{{$v->nip_ketua_spi}}</td>
+                                    <td class="text-center list-inline">
                                         <div class="d-inline-flex bd-highlight">
                                         <form action="/periode/{{ $v->id }}" method="post">
                                             @csrf

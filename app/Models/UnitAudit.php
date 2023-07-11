@@ -8,31 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class UnitAudit extends Model
 {
     use HasFactory;
-
-    protected $guarded = ['id'];
-
-    public function questions()
+    protected $table = 'unit_audits';
+    public function periodeAudit()
     {
-        return $this->hasMany(Question::class);
+        return $this->belongsTo(PeriodeAudit::class, 'id_periode_audit');
     }
-
-    public function responses()
+    public function standarRuangLingkup()
     {
-        return $this->hasMany(Response::class);
-    }
-
-    public function grades()
-    {
-        return $this->hasMany(Grade::class);
-    }
-
-    public function gradesStoring()
-    {
-        return $this->hasMany(GradeStoring::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(UnitAuditt::class);
+        return $this->hasMany(StandarRuangLingkup::class, 'id_unit_audit');
     }
 }

@@ -248,7 +248,7 @@
                             <table class="table" id="daftarSoal">
                                 <thead class="bg-secondary text-white">
                                     <tr>
-                                        <th>Upload Setup File (??)</th>
+                                        <th>Feedback Hasil Temuan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -258,102 +258,12 @@
                                             <textarea rows="3" style="width:100%; resize:none;" name="parameter"></textarea>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            Upload File<br>
-                                            <input type="file" name="setup_file" id="setup_file" required>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#kirimsetupfile">Submit</button>
-            {{-- <div class="card mb-3 p-2">
-                <div class="body">
-                    <div class="d-flex flex-row bd-highlight">
-                        <div class="p-2 bd-highlight">Data pendahuluan : </div>
-                        <div class="p-2 bd-highlight">
-                                @if($check->isEmpty())
-                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalPendahuluan">Isi data</button>
-                                @else
-                                    <span class="badge bg-success">
-                                        Data Terisi
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" fill="currentColor" class="bi bi-check-lg ms-1 " viewBox="0 0 16 16">
-                                            <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
-                                        </svg>
-                                    </span>
-                                @endif
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            {{-- <div class="card p-3">
-                <form action="/auditee/filter" method="post">
-                    @csrf
-                    <div class="d-flex flex-row-reverse bd-highlight">
-                        <div class="p-2 bd-highlight">
-                            <button type="submit" class="btn btn-sm btn-success">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-search mb-1" viewBox="0 0 16 16">
-                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="p-2 bd-highlight">
-                            <select class="form-select form-select-sm" name="filter" aria-label="Default select example">
-                                <option selected> --Pilih Tahun-- </option>
-                                @for ($year=2021; $year<=date('Y'); $year++)
-                                    <option value="{{ $year }}">{{ $year }}</option>
-                                @endfor
-                            </select>
-                        </div>
-                        <div class="p-2 bd-highlight">
-                          Filter Tahun:
-                        </div>
-                    </div>
-                </form>
-                <table id="table_standart" class="table table-striped text-center table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Standart</th>
-                        <th>Keterangan</th>
-                        <th>Tahun</th>
-                        <th>Aksi</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach( $standart as $v )
-                            @if(!$v->responses->isEmpty())
-                                <tr>
-                                    <td>Standart {{ $loop->iteration }}</td>
-                                    <td>{{ $v->name }}</td>
-                                    <td>{{ $v->created_at->format('Y') }}</td>
-                                    <td>
-                                        <span class="badge bg-success">Terisi</span>
-                                        <a href="/auditee/{{ $v->id }}/{{ $filter }}/grade"><span class="badge bg-primary">Cek Nilai</span></a>
-                                    </td>
-                                </tr>
-                            @else
-                                <tr>
-                                    <td>Standart {{ $loop->iteration }}</td>
-                                    <td>{{ $v->name }}</td>
-                                    <td>{{ $v->created_at->format('Y') }}</td>
-                                    <td style="width:15%" class="text-center">
-                                        @if($check->isEmpty() || auth()->user()->fakultas == null || auth()->user()->prodi == null)
-                                            <button class="btn btn-outline-success btn-sm" onclick="responseFunction()">Isi standart</button>
-                                        @else
-                                            <a href="/auditee/{{ $v->id }}/respons/"><button class="btn btn-outline-success btn-sm">Isi standart</button></a>
-                                        @endif
-                                    </td>
-                                </tr>
-                            @endif
-                    @endforeach
-                    </tbody>
-                </table>
-            </div> --}}
-
         </div>
     </div>
     {{-- @if(auth()->user()->fakultas == null || auth()->user()->prodi == null)
