@@ -34,12 +34,10 @@
                             @elseif (Auth::user()->hasRole('auditee'))
                                 <li>
                                     <a class="dropdown-item unstyled" href="{{ route('auditee.dashboard') }}">{{ __('Beranda') }}</a>
-                                    <a class="dropdown-item unstyled" href="{{ route('auditee.profile') }}">{{ __('Profile') }}</a>
                                 </li>
                             @elseif (Auth::user()->hasRole('auditor'))
                                 <li>
                                     <a class="dropdown-item unstyled" href="{{ route('auditor.dashboard') }}">{{ __('Beranda') }}</a>
-                                    <a class="dropdown-item unstyled" href="{{ route('auditor.profile') }}">{{ __('Profile') }}</a>
                                 </li>
                             @elseif (Auth::user()->hasRole('ketua'))
                                 <li>
