@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 
 /*
@@ -72,8 +73,9 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/dashboardAuditor', [App\Http\Controllers\AdminController::class, 'dashboardAuditor'])->name('admin.dashboardAuditor');
 
     //    unit audit
-    Route::get('/unit', [App\Http\Controllers\UnitController::class, 'index'])->name('daftarUnit');
-    Route::get('/tambahUnit', [App\Http\Controllers\UnitController::class, 'tambahUnit'])->name('tambahUnit');
+    Route::get('/daftarUnit', [App\Http\Controllers\UnitController::class, 'index'])->name('daftarUnit');
+    Route::post('/tambahUnit', [App\Http\Controllers\UnitController::class, 'tambahUnit'])->name('tambahUnit');
+    Route::get('/pageTambahUnit', [App\Http\Controllers\UnitController::class, 'pageTambahUnit'])->name('pageTambahUnit');
 
 });
 
@@ -81,6 +83,8 @@ Route::group(['middleware' => ['role:ketua']], function () {
 
     Route::get('/ketua/dashboard', [App\Http\Controllers\KetuaController::class, 'index'])->name('ketua.dashboard');
 
+    Route::get('/ketua/tambahAuditor', [KetuaController::class, 'tambahAuditor'])->name('ketua.tambahAuditor');
+    
     //ListTim
     Route::get('/ketua/tim', [App\Http\Controllers\KetuaController::class, 'tim'])->name('ketua.tim');
 
@@ -89,6 +93,7 @@ Route::group(['middleware' => ['role:ketua']], function () {
 
     //Profile
     Route::get('/ketua/profile', [App\Http\Controllers\KetuaController::class, 'profile'])->name('ketua.profile');
+    Route::post('/ketua/profile', [App\Http\Controllers\KetuaController::class, 'update'])->name('ketua.update');
 
     //update profile
     //Route::post('/ketua/{user}/update/profile', [App\Http\Controllers\AuditeeController::class, 'update']);
@@ -162,6 +167,9 @@ Route::group(['middleware' => ['role:auditor']], function () {
     //    editstandart
     Route::get('/standarts/{standart}/edit', [App\Http\Controllers\StandartController::class, 'view']);
     Route::post('/standarts/{standart}/updates', [App\Http\Controllers\StandartController::class, 'update']);
+
+    Route::post('/tambahStandarRuangLingkup', [App\Http\Controllers\AuditorController::class, 'tambahStandarRuangLingkup'])->name('tambahStandarRuangLingkup');
+    Route::get('/pageTambahStandarRuangLingkup', [App\Http\Controllers\AuditorController::class, 'pageTambahStandarRuangLingkup'])->name('pageTambahStandarRuangLingkup');
 
 });
 

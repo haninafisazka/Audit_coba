@@ -203,7 +203,7 @@
                     UNIT AUDIT
                 </h1>
                 <hr>
-                <a href="{{route('tambahUnit')}}">
+                <a href="{{route('pageTambahUnit')}}">
                     <button type="button" class="btn btn-outline-secondary btn-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                              class="bi bi-person-plus-fill" viewBox="0 1 16 16">

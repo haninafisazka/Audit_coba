@@ -58,6 +58,11 @@ class KetuaController extends Controller
         return view('ketua.tim');
     }
 
+    public function tambahAuditor()
+    {
+        return view('ketua.tambahAuditor');
+    }
+
 
 
     public function grade()
@@ -177,10 +182,6 @@ class KetuaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -201,7 +202,13 @@ class KetuaController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Memeriksa apakah pengguna yang sedang login memiliki role 'ketua'
+        if (Auth::user()->role === 'ketua') {
+            // Logika untuk aksi edit
+        } else {
+            // Jika pengguna tidak memiliki role 'ketua', kembalikan respons error atau redirect ke halaman lain
+            return response()->json(['error' => 'Anda tidak memiliki hak akses untuk melakukan aksi ini'], 403);
+        }
     }
 
     /**
@@ -221,26 +228,16 @@ class KetuaController extends Controller
             'prodi' => 'required|string',
         ]);
 
-        $data['prodi'] = ucwords($data['prodi']) ;
-        $data['updated_at'] = Carbon::now() ;
+        $user = User::find($id);
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->fakultas = $data['fakultas'];
+        $user->prodi = $data['prodi'];
+        $user->save();
 
-//        dd($data);
-
-        $update = \DB::table('users')
-            ->where('id', '=',$id)
-            ->update($data);
-
-//        dd($update);
-
-        if(!is_null($update)) {
-            return redirect()->route('ketua.profile')->with('success', 'Berhasil tambah data');
-        }
-        else {
-            return back()->with("error", "Proses Gagal");
-        }
-
+        return redirect()->route('ketua.dashboard')->with('success', 'Profil berhasil diperbarui.');
     }
-
+    
     public function insert_dataPendahuluan(Request $request, $id)
     {
         $data = $request->validate([
@@ -281,4 +278,40 @@ class KetuaController extends Controller
     {
         //
     }
+
+    public function __construct()
+    {
+        $this->middleware('role:ketua')->only(['update']);
+    }
+
+    public function store(Request $request)
+    {
+        // Validasi data input
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'fakultas' => 'required|string',
+            'prodi' => 'required|string',
+        ]);
+
+        // Mendapatkan ID pengguna yang sedang login
+        $userId = auth()->id();
+
+        // Mengambil data pengguna dari database berdasarkan ID
+        $user = User::find($userId);
+
+        // Mengupdate atribut-atribut pengguna dengan data input yang valid
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->fakultas = $validatedData['fakultas'];
+        $user->prodi = $validatedData['prodi'];
+
+        // Menyimpan perubahan ke database
+        $user->save();
+
+        // Memberikan umpan balik kepada pengguna
+        return redirect()->route('ketua.dashboard')->with('success', 'Data berhasil disimpan');
+    }
+
+
 }

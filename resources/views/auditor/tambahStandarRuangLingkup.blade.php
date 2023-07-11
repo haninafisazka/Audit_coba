@@ -136,49 +136,89 @@
             </div>
         </div>
         
-        <div class="col">
-            <a href="{{route('pageTambahStandarRuangLingkup')}}">
-                <button type="button" class="btn btn-outline-secondary btn-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-                         class="bi bi-person-plus-fill" viewBox="0 1 16 16">
+        <div class="col-10 border-start">
+{{--            CONTENT--}}
+            <div class="container-fluid">
+                <h1 class="fw-bold mt-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
                         <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                        <path fill-rule="evenodd"
-                              d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
                     </svg>
-                    <span>Tambah Standar Ruang Lingkup</span>
-                </button>
-            </a>
-            <hr>
-            <div class="card p-3">
-                <table id="table_standart" class="table table-striped text-center table-bordered">
-                    <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>ID Setup File</th>
-                        <th>Nama Ruang Lingkup</th>
-                        <th>Parameter Ruang Lingkup</th>
-                        <th>Aksi</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($standarRuangLingkup as $d)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $d->id_setup_file }}</td>
-                            <td>{{ $d->nama_ruang_lingkup }}</td>
-                            <td>{{ $d->deskripsi_ruang_lingkup }}</td>
-                            <td class="text-center">
-                                <a href="/"><button class="btn btn-outline-success btn-sm" data-bs-toggle="popover" title="Lihat Data User">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                        </svg>
-                                        Lihat
-                                    </button></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                    TAMBAH STANDAR RUANG LINGKUP </h1>
+                <hr>
+                <div class="card mt-4 mb-3">
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('tambahStandarRuangLingkup') }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="tanggal_awal_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Awal Audit') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control" name="tanggal_awal_audit" autofocus required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="tanggal_akhir_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Akhir Audit') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control" name="tanggal_akhir_audit" autofocus required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="no_sk_tugas_audit" class="col-md-4 col-form-label text-md-right">{{ __('Nomor SK Tugas Audit') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="no_sk_tugas_audit" type="text" class="form-control" name="no_sk_tugas_audit" autofocus required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="file_sk" class="col-md-4 col-form-label text-md-right">{{ __('File SK') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="file" class="form-control" name="file_sk" autofocus required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="tanggal_sk" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal SK') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control" name="tanggal_sk" autofocus required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('Ketua SPI') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="ketua_spi" type="text" class="form-control" name="ketua_spi" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
+                                <label for="nip_ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua SPI') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="nip_ketua_spi" type="text" class="form-control" name="nip_ketua_spi" required autofocus>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Submit') }}
+                                    </button>
+                                    <a href="{{ url()->previous() }}">
+                                        <button type="button" class="btn btn-secondary"> {{ __('Batal') }}</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -379,4 +379,44 @@ class AuditorController extends Controller
     {
         return view('auditor.standar.standar');
     }
+
+    public function tambahStandarRuangLingkup(Request $request)
+    {
+        // $request->validate([
+        //     'tanggal_awal_audit'   =>      'required',
+        //     'tanggal_akhir_audit'  =>      'required',
+        //     'no_sk'                =>      'required|string',
+        //     'file_sk'              =>      'required',
+        //     'ketua_spi'            =>      'required|string',
+        //     'nip_ketua'            =>      'required|string',
+        // ]);
+
+        $max = StandarRuangLingkup::max('id');
+        $id = $max +1;
+
+        $periode = new StandarRuangLingkup;
+        $periode->id    = $id;
+        $periode->tanggal_awal_audit  = $request->input('tanggal_awal_audit');
+        $periode->tanggal_akhir_audit = $request->input('tanggal_akhir_audit');
+        $periode->no_sk_tugas_audit      = $request->input('no_sk_tugas_audit');
+        $fileName = '';
+        if ($request->hasFile('file_sk')){
+            $file_sk       = $request->file('file_sk');
+            $fileName   = "file"."-".Str::random(5).".".$file_sk->getClientOriginalExtension();
+            $file_sk->move(public_path('/file/'),$fileName);
+        }
+        
+        $periode->file_sk = ($request->hasFile('file_sk')) ? $fileName : $periode->file_sk;
+        $periode->tanggal_sk          = $request->input('tanggal_sk');
+        $periode->ketua_spi           = $request->input('ketua_spi');
+        $periode->nip_ketua_spi       = $request->input('nip_ketua_spi');
+        $periode->save();
+        return redirect()->back();
+
+    }
+
+    public function pageTambahStandarRuangLingkup()
+    {
+        return view('auditor.tambahStandarRuangLingkup');
+    }
 }

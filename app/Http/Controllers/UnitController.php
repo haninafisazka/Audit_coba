@@ -25,6 +25,12 @@ class UnitController extends Controller
         return view('admin.daftarUnit', compact('unitAudit'));
     }
 
+    public function pageTambahUnit()
+    {
+        return view('admin.tambahUnit');
+    }
+
+
     public function tambahUnit(Request $request)
     {
         $request->validate([
@@ -42,7 +48,7 @@ class UnitController extends Controller
         $unit = new UnitAudit;
         $unit->id    = $id;
         $unit->id_periode_audit         = $request->input('id_periode_audit');
-        $unit->id_standar_ruang_lingkup = $request->input('standar_ruang_lingkup');
+        $unit->id_standar_ruang_lingkup = $request->input('id_standar_ruang_lingkup');
         $unit->nama_unit                = $request->input('nama_unit');
         $unit->tanggal_audit            = $request->input('tanggal_audit');
         $unit->ketua_tim                = $request->input('ketua_tim');
@@ -50,5 +56,13 @@ class UnitController extends Controller
         $unit->save();
         return redirect()->back();
 
+    }
+
+    public function destroy($id)
+    {
+        $periode = UnitAudit::findOrFail($id);
+        $periode->delete();
+
+        return redirect()->back()->with('success','Berhasil Menghapus data');
     }
 }
