@@ -199,7 +199,7 @@
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#home-collapse" aria-expanded="true">
-                            Setup File
+                                Upload File
                         </button>
                         <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -218,48 +218,51 @@
                         </button>
                         <div class="collapse show" id="account-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Feedback Temuan</a></li>
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Tindak Lanjut Temuan</a></li>
+                                <li><a href="{{ route('auditee.feedbackTemuan') }}" class="link-dark rounded">Feedback Temuan</a></li>
+                                <li><a href="{{ route('auditee.feedbackTindakLanjut') }}" class="link-dark rounded">Tindak Lanjut Temuan</a></li>
                             </ul>
                         </div>
                     </li>
 
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#account-collapse" aria-expanded="false">
-                            User
-                        </button>
-                        <div class="collapse show" id="account-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Profile</a></li>
-                            </ul>
-                        </div>
-                    </li>
+        
                 </ul>
             </div>
         </div>
         <div class="col">
-            <h2 class="text-center">Sistem Audit Internal</h2>
+       <div class="col">
+            <h2 class="text-center">Feedback Hasil Temuan</h2>
             <hr>
             <div class="card mb-3 p-2">
                 <div class="tab-pane fade show active" id="format_soal" role="tabpanel" aria-labelledby="format_soal-tab">
                     <div class="card-body">
                         <div class="table-container">
-                            <table class="table" id="daftarSoal">
-                                <thead class="bg-secondary text-white">
-                                    <tr>
-                                        <th>Feedback Hasil Temuan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            Parameter<br>
-                                            <textarea rows="3" style="width:100%; resize:none;" name="parameter"></textarea>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+
+                        <div class="col-auto mb-3">Komentar/Klarifikasi:</div>
+                                    <div class="col-12 mb-3">
+                                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" aria-describedby="description" id="description" rows="3" >{{ old('description') }}</textarea>
+                                            @error('description')
+                                                <div id="description" class="invalid-feedback">
+                                                    Deskripsi wajib diisi
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>   
+                                    
+
+                                    <div class="row pt-3 mb-4">
+                                        <div class="col-auto pe-0">
+                                            <button type="submit" class="btn btn-success" onclick="simpanFunction()">Simpan</button>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a type="button" onclick="batalFunction()" href="{{route('auditee.dashboard')}}" class="btn btn-secondary">Batal</a>
+                                        </div>
+                                    </div> 
+                                </div>  
+
+                                </div>
+                                
+                            
+                            </div>
                         </div>
                     </div>
                 </div>

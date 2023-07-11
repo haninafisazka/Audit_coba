@@ -95,6 +95,8 @@ Route::group(['middleware' => ['role:auditee']], function () {
     Route::get('/auditee/dashboard', [App\Http\Controllers\AuditeeController::class, 'index'])->name('auditee.dashboard');
     Route::get('/auditee/profile', [App\Http\Controllers\AuditeeController::class, 'profile'])->name('auditee.profile');
     Route::get('/auditee/grade', [App\Http\Controllers\AuditeeController::class, 'grade'])->name('auditee.grade');
+    Route::get('/auditee/feedbackTemuan', [App\Http\Controllers\AuditeeController::class, 'feedbackTemuan'])->name('auditee.feedbackTemuan');
+    Route::get('/auditee/feedbackTindakLanjut', [App\Http\Controllers\AuditeeController::class, 'feedbackTindakLanjut'])->name('auditee.feedbackTindakLanjut');
 
     //grade auditee
     Route::get('/auditee/{standart}/{year}/grade', [App\Http\Controllers\AuditeeController::class, 'auditeeGrade'])->name('auditee.auditeeGrade');

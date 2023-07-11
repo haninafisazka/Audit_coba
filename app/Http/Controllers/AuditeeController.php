@@ -47,6 +47,15 @@ class AuditeeController extends Controller
         return view('auditee.profile.profile');
     }
 
+    public function feedbackTemuan()
+    {
+        return view('auditee.feedback.feedbackTemuan');
+    }
+
+    public function feedbackTindakLanjut()
+    {
+        return view('auditee.feedback.tindakLanjut');
+    }
 
     public function grade()
     {

@@ -199,7 +199,7 @@
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#home-collapse" aria-expanded="true">
-                            Setup File
+                            Upload File
                         </button>
                         <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
@@ -218,23 +218,13 @@
                         </button>
                         <div class="collapse show" id="account-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Feedback Temuan</a></li>
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Tindak Lanjut Temuan</a></li>
+                                <li><a href="{{ route('auditee.feedbackTemuan') }}" class="link-dark rounded">Feedback Temuan</a></li>
+                                <li><a href="{{ route('auditee.feedbackTindakLanjut') }}" class="link-dark rounded">Tindak Lanjut Temuan</a></li>
                             </ul>
                         </div>
                     </li>
 
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#account-collapse" aria-expanded="false">
-                            User
-                        </button>
-                        <div class="collapse show" id="account-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Profile</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -248,7 +238,7 @@
                             <table class="table" id="daftarSoal">
                                 <thead class="bg-secondary text-white">
                                     <tr>
-                                        <th>Upload Setup File (??)</th>
+                                        <th>Upload Setup File</th>
                                     </tr>
                                 </thead>
                                 <tbody>
