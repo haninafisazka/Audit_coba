@@ -113,30 +113,9 @@
 
 
 
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#profile-collapse" aria-expanded="false">
-                            <span>Standar</span>
-                        </button>
-                        <div class="collapse" id="profile-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('auditor.standar') }}" class="link-dark rounded">Ruang Lingkup</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    
 
 
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#profile-collapse" aria-expanded="false">
-                            <span>Setup</span>
-                        </button>
-                        <div class="collapse show" id="profile-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li class="fw-bold"><a href="{{ route('auditor.setup') }}" class="link-dark rounded">Setup File</a></li>
-                            </ul>
-                        </div>
-                    </li>
 
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"

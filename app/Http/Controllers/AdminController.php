@@ -103,7 +103,6 @@ class AdminController extends Controller
         $periode->tanggal_sk          = $request->input('tanggal_sk');
         $periode->ketua_spi           = $request->input('ketua_spi');
         $periode->nip_ketua_spi       = $request->input('nip_ketua_spi');
-        $periode->nama_unit           = $request->input('nama_unit');
         $periode->save();
         return redirect()->route('admin.dashboard');
 

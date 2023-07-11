@@ -150,62 +150,26 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('tambahStandarRuangLingkup') }}" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="tanggal_awal_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Awal Audit') }}</label>
-
-                                <div class="col-md-6">
-                                    <input type="date" class="form-control" name="tanggal_awal_audit" autofocus required>
-                                </div>
-                            </div>
+                            
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="tanggal_akhir_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Akhir Audit') }}</label>
-
-                                <div class="col-md-6">
-                                    <input type="date" class="form-control" name="tanggal_akhir_audit" autofocus required>
-                                </div>
-                            </div>
-
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="no_sk_tugas_audit" class="col-md-4 col-form-label text-md-right">{{ __('Nomor SK Tugas Audit') }}</label>
+                                <label for="no_sk_tugas_audit" class="col-md-4 col-form-label text-md-right">{{ __('Nama Standar') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="no_sk_tugas_audit" type="text" class="form-control" name="no_sk_tugas_audit" autofocus required>
                                 </div>
                             </div>
 
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="file_sk" class="col-md-4 col-form-label text-md-right">{{ __('File SK') }}</label>
-
-                                <div class="col-md-6">
-                                    <input type="file" class="form-control" name="file_sk" autofocus required>
-                                </div>
-                            </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="tanggal_sk" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal SK') }}</label>
-
-                                <div class="col-md-6">
-                                    <input type="date" class="form-control" name="tanggal_sk" autofocus required>
-                                </div>
-                            </div>
-
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('Ketua SPI') }}</label>
+                                <label for="ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('Parameter Standar') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="ketua_spi" type="text" class="form-control" name="ketua_spi" required autofocus>
                                 </div>
                             </div>
 
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="nip_ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua SPI') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="nip_ketua_spi" type="text" class="form-control" name="nip_ketua_spi" required autofocus>
-                                </div>
-                            </div>
-
+                            
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">

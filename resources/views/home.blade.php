@@ -125,7 +125,7 @@
                                 <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
                                 <p class="mt-3 mb-3 text-secondary fs-small">Apabila terdapat kendala teknis silahkan
                                     menghubungi
-                                    customer service di <a href="mailto: LPM@unipma.ac.id">LPM@uns.ac.id</a> </p>
+                                    customer service di <a href="mailto: SAISeMar@uns.ac.id">SAISeMar@uns.ac.id</a> </p>
                             </form>
                         </div>
                     </div>

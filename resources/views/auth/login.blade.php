@@ -25,7 +25,7 @@
 
             <p class="col-12 col-lg-auto me-lg-auto justify-content-center mb-md-0 ms-3">Sistem Penjaminan Mutu
                 Internal
-                <br> UNIVERSITAS PGRI MADIUN </p>
+                <br> UNIVERSITAS SEBELAS MARET </p>
 
             </div>
         </div>

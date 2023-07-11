@@ -143,10 +143,6 @@
                                 <li><a href="{{route('daftarUnit')}}" class="link-dark rounded">Unit Audit</a>
                                 </li>
                             </ul>
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{route('admin.dashboardUnitAudit')}}" class="link-dark rounded">Unit Audit</a>
-                                </li>
-                            </ul>
                         </div>
                     </li>
                     <li class="mb-1">
@@ -246,13 +242,8 @@
                                     <td>{{$v->nip_ketua_spi}}</td>
                                     <td class="text-center list-inline">
                                         <div class="d-inline-flex bd-highlight">
-<<<<<<< HEAD
                                         <form id="form" class="delete-form" action="{{ route('destroy',$v->id) }}"
                                               method="POST">
-=======
-                                            <form id="form" class="delete-form" action="{{ route('destroy',$v->id) }}"
-                                                method="POST">
->>>>>>> 0854e751677c363393de3a7e6c573a99941fc1e1
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger btn-sm" onclick="deleteFunction()">Hapus</button>
