@@ -58,6 +58,11 @@ class KetuaController extends Controller
         return view('ketua.tim');
     }
 
+    public function tambahAuditor()
+    {
+        return view('ketua.tambahAuditor');
+    }
+
 
 
     public function grade()

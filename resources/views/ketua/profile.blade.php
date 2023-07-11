@@ -81,34 +81,6 @@
 {{--container--}}
 <div class="container-fluid">
     <div class="row mt-3">
-        <div class="col-2 border-end">
-            <div id="side-bar" class="ps-3 pt-3 bg-white overflow-auto" style="width: 180px;">
-                <ul class="list-unstyled ps-0">
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#home-collapse" aria-expanded="true">
-                            Daftar Tim
-                        </button>
-                        <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a class="link-dark rounded" href="{{ route('ketua.tim') }}" >Daftar Tim</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="mb-1">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#home-collapse" aria-expanded="true">
-                            Auditor
-                        </button>
-                        <div class="collapse" id="dashboard-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a class="link-dark rounded" href="{{ route ('ketua.auditor') }}">Auditor</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <div class="col">
             <div class="card p-3 mb-5 border-0">
             <h2 class="text-center">Profil Saya</h2>

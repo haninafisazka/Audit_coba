@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers;
 
 
@@ -77,6 +78,11 @@ Route::group(['middleware' => ['role:ketua']], function () {
 
     Route::get('/ketua/dashboard', [App\Http\Controllers\KetuaController::class, 'index'])->name('ketua.dashboard');
 
+    Route::post('/ketua/tambahAuditor', function (Request $request) {
+        return view('tambahAuditor');
+    })->name('ketua.tambahAuditor');
+    
+    
     //ListTim
     Route::get('/ketua/tim', [App\Http\Controllers\KetuaController::class, 'tim'])->name('ketua.tim');
 
@@ -85,6 +91,7 @@ Route::group(['middleware' => ['role:ketua']], function () {
 
     //Profile
     Route::get('/ketua/profile', [App\Http\Controllers\KetuaController::class, 'profile'])->name('ketua.profile');
+
 
     //update profile
     //Route::post('/ketua/{user}/update/profile', [App\Http\Controllers\AuditeeController::class, 'update']);
