@@ -158,7 +158,7 @@
                     DAFTAR UNIT
                 </h1>
                 <hr>
-                <a href="{{route('pageTambahPeriodeAudit')}}">
+                <a href="{{route('pageTambahUnitAudit')}}">
                     <button type="button" class="btn btn-outline-secondary btn-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                              class="bi bi-person-plus-fill" viewBox="0 1 16 16">
@@ -176,10 +176,8 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama_Unit</th>
-                                <th>Tanggal_Audit</th>
-                                <th>No_SK</th>
-                                <th>Ketua_Unit</th>
-                                <th>NIP_Ketua_Unit</th>
+                                <th>Ketua_Tim</th>
+                                <th>NIP_Ketua_Tim</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
@@ -188,16 +186,13 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$v->Nama_Unit}}</td>
-                                    <td>{{$v->Tanggal_Audit}}</td>
-                                    <td>{{$v->No_SK}}</td>
-                                    <td>{{$v->Ketua_Unit}}</td>
-                                    <td>{{$v->NIP_Ketua_Unit}}</td>
-                                    <td style="width:25%" class="text-center list-inline">
+                                    <td>{{$v->Ketua_Tim}}</td>
+                                    <td>{{$v->NIP_Ketua_Tim}}</td>
+                                    <td class="text-center list-inline">
                                         <div class="d-inline-flex bd-highlight">
-                                        <form action="/unitAudit/{{ $v->id }}" method="post">
+                                            <form id="form" class="delete-form" action="{{ route('destroy',$v->id) }}"
+                                                method="POST">
                                             @csrf
-                                            @method('GET')
-                                            <a href="/unitAudit/{{ $v->id }}/edit"><button type="button" class="btn btn-outline-warning btn-sm">Edit</button></a>
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger btn-sm" onclick="deleteFunction()">Hapus</button>
                                         </form>

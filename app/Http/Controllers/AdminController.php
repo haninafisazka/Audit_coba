@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use App\Models\Standart;
 use App\Models\PeriodeAudit;
+use App\Models\UnitAudit;
+
 use Illuminate\Support\Facades\DB;
 use app\Models\User;
 use Illuminate\Http\Request;
@@ -32,6 +34,11 @@ class AdminController extends Controller
     public function pageTambahPeriodeAudit()
     {
         return view('admin.tambahPeriodeAudit');
+    }
+
+    public function pageTambahUnitAudit()
+    {
+        return view('admin.tambahUnitAudit');
     }
 
     public function pageTambahAuditee()
@@ -96,8 +103,24 @@ class AdminController extends Controller
         $periode->tanggal_sk          = $request->input('tanggal_sk');
         $periode->ketua_spi           = $request->input('ketua_spi');
         $periode->nip_ketua_spi       = $request->input('nip_ketua_spi');
+        $periode->nama_unit           = $request->input('nama_unit');
         $periode->save();
-        return redirect()->back();
+        return redirect()->route('admin.dashboard');
+
+    }
+
+    public function tambahUnitAudit(Request $request)
+    {
+        $max = UnitAudit::max('id');
+        $id = $max +1;
+
+        $unitAudit = new UnitAudit;
+        $unitAudit->id    = $id;
+        $unitAudit->nama_unit            = $request->input('nama_unit');
+        $unitAudit->ketua_tim           = $request->input('ketua_tim');
+        $unitAudit->nip_ketua_tim       = $request->input('nip_ketua_tim');
+        $unitAudit->save();
+        return redirect()->route('admin.dashboardUnitAudit');
 
     }
 

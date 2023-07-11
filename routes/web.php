@@ -31,6 +31,9 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('/tambahPeriodeAudit', [App\Http\Controllers\AdminController::class, 'tambahPeriodeAudit'])->name('tambahPeriodeAudit');
     Route::get('/pageTambahPeriodeAudit', [App\Http\Controllers\AdminController::class, 'pageTambahPeriodeAudit'])->name('pageTambahPeriodeAudit');
 
+    Route::post('/tambahUnitAudit', [App\Http\Controllers\AdminController::class, 'tambahUnitAudit'])->name('tambahUnitAudit');
+    Route::get('/pageTambahUnitAudit', [App\Http\Controllers\AdminController::class, 'pageTambahUnitAudit'])->name('pageTambahUnitAudit');
+
     //    tambahauditee
     Route::post('/tambahAuditee', [App\Http\Controllers\AdminController::class, 'tambahAuditee'])->name('tambahAuditee');
     Route::post('/userAuditee/edit', [App\Http\Controllers\AdminController::class, 'edit'])->name('userAuditee.edit');

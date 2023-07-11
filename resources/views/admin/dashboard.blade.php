@@ -244,10 +244,9 @@
                                     <td>{{$v->nip_ketua_spi}}</td>
                                     <td class="text-center list-inline">
                                         <div class="d-inline-flex bd-highlight">
-                                        <form action="/periode/{{ $v->id }}" method="post">
+                                            <form id="form" class="delete-form" action="{{ route('destroy',$v->id) }}"
+                                                method="POST">
                                             @csrf
-                                            @method('GET')
-                                            <a href="/periode/{{ $v->id }}/edit"><button type="button" class="btn btn-outline-warning btn-sm">Edit</button></a>
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger btn-sm" onclick="deleteFunction()">Hapus</button>
                                         </form>
