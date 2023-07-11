@@ -22,23 +22,26 @@ class KetuaController extends Controller
      */
     public function index()
     {
-        $filter = Carbon::now()->format('Y');
+        $auditor = User::where('role_id', 3)->get();;
 
-        $uid = Auth::id();
-        $standart = Standart::with(['responses' => function($q) use($uid) {
-            // Query the name field in status table
-            $q->where('user_id', '=', $uid)->whereYear('created_at','=', Carbon::now()->format('Y'));
-        }])
-        ->whereYear('created_at', date('Y'))->get();
+        return view('admin.daftarUnit', compact('unitAudit'));
+//         $filter = Carbon::now()->format('Y');
 
-        $i = Carbon::now();
+//         $uid = Auth::id();
+//         $standart = Standart::with(['responses' => function($q) use($uid) {
+//             // Query the name field in status table
+//             $q->where('user_id', '=', $uid)->whereYear('created_at','=', Carbon::now()->format('Y'));
+//         }])
+//         ->whereYear('created_at', date('Y'))->get();
 
-        $check = DataPendahuluan::whereYear('created_at', '<=', $i)
-            ->whereYear('updated_at', '<=', $i)
-            ->where('user_id','=', $uid)
-            ->get();
+//         $i = Carbon::now();
 
-//        dd($filter);
+//         $check = DataPendahuluan::whereYear('created_at', '<=', $i)
+//             ->whereYear('updated_at', '<=', $i)
+//             ->where('user_id','=', $uid)
+//             ->get();
+
+// //        dd($filter);
 
         return view('ketua.dashboard', compact('standart', 'check','filter'));
     }
