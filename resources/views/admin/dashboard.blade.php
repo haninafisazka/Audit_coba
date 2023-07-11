@@ -236,15 +236,12 @@
                                     <td>{{$v->Keterangan}}</td>
                                     <td style="width:25%" class="text-center list-inline">
                                         <div class="d-inline-flex bd-highlight">
-                                        <form id="form" class="delete-form" action="{{ route('destroy',$v->id) }}"
-                                              method="POST">
+                                        <form action="/periode/{{ $v->id }}" method="post">
                                             @csrf
+                                            @method('GET')
+                                            <a href="/periode/{{ $v->id }}/edit"><button type="button" class="btn btn-outline-warning btn-sm">Edit</button></a>
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-outline-danger btn-sm" onclick="deleteFunction()">Hapus</button>
-                                        </form>
-                                        <form action="/reset/{{ $v->id }}/user" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-secondary ms-1 btn-sm" onclick="resetFunction()">Reset Password</button>
                                         </form>
                                         </div>
                                     </td>
