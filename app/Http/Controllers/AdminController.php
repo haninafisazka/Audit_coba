@@ -111,16 +111,32 @@ class AdminController extends Controller
 
     public function tambahUnitAudit(Request $request)
     {
-        $max = UnitAudit::max('id');
-        $id = $max +1;
+        $request->validate([
+            'nama_unit'              =>      'required|string|max:30',
+            'tanggal_audit'          =>      'required|string',
+            'no_sk'                  =>      'required|string',
+            'ketua_unit'             =>      'required|string',
+            'nip_ketua_unit'         =>      'required|string',
+        ]);
 
-        $unitAudit = new UnitAudit;
-        $unitAudit->id    = $id;
-        $unitAudit->nama_unit            = $request->input('nama_unit');
-        $unitAudit->ketua_tim           = $request->input('ketua_tim');
-        $unitAudit->nip_ketua_tim       = $request->input('nip_ketua_tim');
-        $unitAudit->save();
-        return redirect()->route('admin.dashboardUnitAudit');
+//        dd($request->all());
+
+        $user = User::create([
+            'nama_unit' => ucwords($request['nama_unit']),
+            'tanggal_audit' => ucwords($request['tanggal_audit']),
+            'no_sk' => ucwords($request['no_sk']),
+            'ketua_unit' => ucwords($request['ketua_unit']),
+            'nip_ketua_unit' => ucwords($request['nip_ketua_unit'])
+        ]);
+
+        $user->assignRole('admin');
+
+        if(!is_null($user)) {
+            return redirect()->route('admin.dashboardUnitAudit')->with("success", "Berhasil Tambah");
+        }
+        else {
+            return back()->with("error", "Proses Gagal");
+        }
 
     }
 

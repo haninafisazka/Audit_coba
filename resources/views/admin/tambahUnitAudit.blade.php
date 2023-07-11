@@ -117,6 +117,20 @@
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
+                                <label for="tanggal_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Audit') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="tanggal_audit" type="text" class="form-control  @error('tanggal_audit') is-invalid @enderror" name="tanggal_audit" value="{{ old('tanggal_audit') }}" required autocomplete="tanggal_audit" autofocus>
+
+                                    @error('tanggal_audit')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-3 mb-3">
                                 <label for="no_sk" class="col-md-4 col-form-label text-md-right">{{ __('No SK') }}</label>
 
                                 <div class="col-md-6">
@@ -131,12 +145,12 @@
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="ketua_tim" class="col-md-4 col-form-label text-md-right">{{ __('Ketua Tim') }}</label>
+                                <label for="ketua_unit" class="col-md-4 col-form-label text-md-right">{{ __('Ketua Unit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="ketua_tim" type="ketua_tim" class="form-control @error('ketua_tim') is-invalid @enderror" name="ketua_tim" value="{{ old('ketua_tim') }}" required autocomplete="ketua_tim" autofocus>
+                                    <input id="ketua_unit" type="ketua_unit" class="form-control @error('ketua_unit') is-invalid @enderror" name="ketua_unit" value="{{ old('ketua_unit') }}" required autocomplete="ketua_unit" autofocus>
 
-                                    @error('ketua_tim')
+                                    @error('ketua_unit')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -145,12 +159,12 @@
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="nip_ketua_tim" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua Tim') }}</label>
+                                <label for="nip_ketua_unit" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua Unit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="nip_ketua_tim" type="nip_ketua_tim" class="form-control @error('nip_ketua_tim') is-invalid @enderror" name="nip_ketua_tim" value="{{ old('nip_ketua_tim') }}" required autocomplete="nip_ketua_tim" autofocus>
+                                    <input id="nip_ketua_unit" type="nip_ketua_unit" class="form-control @error('nip_ketua_unit') is-invalid @enderror" name="nip_ketua_unit" value="{{ old('nip_ketua_unit') }}" required autocomplete="nip_ketua_unit" autofocus>
 
-                                    @error('nip_ketua_tim')
+                                    @error('nip_ketua_unit')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

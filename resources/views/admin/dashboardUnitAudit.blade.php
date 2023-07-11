@@ -176,8 +176,10 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama_Unit</th>
-                                <th>Ketua_Tim</th>
-                                <th>NIP_Ketua_Tim</th>
+                                <th>Tanggal_Audit</th>
+                                <th>No_SK</th>
+                                <th>Ketua_Unit</th>
+                                <th>NIP_Ketua_Unit</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
@@ -186,6 +188,8 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$v->Nama_Unit}}</td>
+                                    <td>{{$v->Tanggal_Audit}}</td>
+                                    <td>{{$v->No_SK}}</td>
                                     <td>{{$v->Ketua_Tim}}</td>
                                     <td>{{$v->NIP_Ketua_Tim}}</td>
                                     <td class="text-center list-inline">
