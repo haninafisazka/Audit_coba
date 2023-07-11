@@ -158,31 +158,6 @@
             <div class="card p-3">
                 <form method="POST" action="/auditor/change_password">
                     @csrf
-                    <!-- <div class="form-group row mb-3">
-                        <label for="password" class="col-md-0 col-form-label text-md-right">File 1</label>
-
-                        <div class="col-md-6">
-                        <input type="file" name="setup_file" id="setup_file" required>
-                        </div> 
-                    </div>
-
-                    <div class="form-group row mb-3">
-                        <label for="password" class="col-md-0 col-form-label text-md-right">File 2</label>
-
-                        <div class="col-md-6">
-                        <input type="file" name="setup_file" id="setup_file" required>
-                        </div> 
-                    </div>
-
-                    <div class="form-group row mb-3">
-                        <label for="password" class="col-md-0 col-form-label text-md-right">File 3</label>
-
-                        <div class="col-md-6">
-                        <input type="file" name="setup_file" id="setup_file" required>
-                        </div> 
-                    </div> -->
-
-
                     <div class="row pt-3 mb-3">
                         <div class="col-auto">Unggah File :</div>
                         <div class="col-7">
@@ -197,6 +172,18 @@
                     </div>
 
 
+                    <div class="form-group row mb-3">
+                        <label for="password" class="col-md-0 col-form-label text-md-right">Deskrpsi File : </label>
+
+                        <div class="col-12">
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" aria-describedby="description" id="description" rows="3" >{{ old('description') }}</textarea>
+                            @error('description')
+                                <div id="description" class="invalid-feedback">
+                                    Deskripsi wajib diisi
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
 
 
                     <div class="form-group row mt-2 mb-3">
