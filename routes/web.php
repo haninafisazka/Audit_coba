@@ -71,6 +71,10 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/admin/dashboardAuditee', [App\Http\Controllers\AdminController::class, 'dashboardAuditee'])->name('admin.dashboardAuditee');
     Route::get('/admin/dashboardAuditor', [App\Http\Controllers\AdminController::class, 'dashboardAuditor'])->name('admin.dashboardAuditor');
 
+    //    unit audit
+    Route::get('/unit', [App\Http\Controllers\UnitController::class, 'index'])->name('daftarUnit');
+    Route::get('/tambahUnit', [App\Http\Controllers\UnitController::class, 'tambahUnit'])->name('tambahUnit');
+
 });
 
 Route::group(['middleware' => ['role:ketua']], function () {

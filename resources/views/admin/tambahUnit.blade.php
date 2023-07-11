@@ -43,7 +43,7 @@
                         <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li class="fw-bold"><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode</a></li>
-                                <li class=""><a href="{{route('admin.daftarUnit')}}" class="link-dark rounded">Unit Audit</a>
+                                <li><a href="{{route('admin.daftarUnit')}}" class="link-dark rounded">Unit Audit</a>
                                 </li>
                             </ul>
                         </div>
@@ -94,65 +94,57 @@
                         <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                         <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
                     </svg>
-                    TAMBAH PERIODE </h1>
+                    TAMBAH UNIT </h1>
                 <hr>
                 <div class="card mt-4 mb-3">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('tambahPeriodeAudit') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('tambahUnit') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row mt-3 mb-3">
-                                <label for="tanggal_awal_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Awal Audit') }}</label>
+                                <label for="id_periode_audit" class="col-md-4 col-form-label text-md-right">{{ __('ID Periode Audit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="date" class="form-control" name="tanggal_awal_audit" autofocus required>
+                                    <input id="id_periode_audit" type="text" class="form-control" name="id_periode_audit" autofocus required>
                                 </div>
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="tanggal_akhir_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Akhir Audit') }}</label>
+                                <label for="id_standar_ruang_lingkup" class="col-md-4 col-form-label text-md-right">{{ __('Standar Ruang Lingkup') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="date" class="form-control" name="tanggal_akhir_audit" autofocus required>
+                                    <input id="id_standar_ruang_lingkup" type="text" class="form-control" name="id_standar_ruang_lingkup" autofocus required>
                                 </div>
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="no_sk_tugas_audit" class="col-md-4 col-form-label text-md-right">{{ __('Nomor SK Tugas Audit') }}</label>
+                                <label for="nama_unit" class="col-md-4 col-form-label text-md-right">{{ __('Nama Unit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="no_sk_tugas_audit" type="text" class="form-control" name="no_sk_tugas_audit" autofocus required>
+                                    <input id="nama_unit" type="text" class="form-control" name="nama_unit" autofocus required>
                                 </div>
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="file_sk" class="col-md-4 col-form-label text-md-right">{{ __('File SK') }}</label>
+                                <label for="tanggal_audit" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal Audit') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="file" class="form-control" name="file_sk" autofocus required>
+                                    <input type="date" class="form-control" name="tanggal_audit" autofocus required>
                                 </div>
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="tanggal_sk" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal SK') }}</label>
+                                <label for="ketua_tim" class="col-md-4 col-form-label text-md-right">{{ __('Ketua Tim') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="date" class="form-control" name="tanggal_sk" autofocus required>
+                                    <input id="ketua_tim" type="text" class="form-control" name="ketua_tim" required autofocus>
                                 </div>
                             </div>
 
                             <div class="form-group row mt-3 mb-3">
-                                <label for="ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('Ketua SPI') }}</label>
+                                <label for="nip_ketua_tim" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua TIM') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="ketua_spi" type="text" class="form-control" name="ketua_spi" required autofocus>
-                                </div>
-                            </div>
-
-                            <div class="form-group row mt-3 mb-3">
-                                <label for="nip_ketua_spi" class="col-md-4 col-form-label text-md-right">{{ __('NIP Ketua SPI') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="nip_ketua_spi" type="text" class="form-control" name="nip_ketua_spi" required autofocus>
+                                    <input id="nip_ketua_tim" type="text" class="form-control" name="nip_ketua_tim" required autofocus>
                                 </div>
                             </div>
 

@@ -10,6 +10,7 @@ use App\Models\Question;
 use App\Models\Response;
 use App\Models\Standart;
 use App\Models\User;
+use App\Models\StandarRuangLingkup;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use mysql_xdevapi\Table;
@@ -24,26 +25,30 @@ class AuditorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(StandarRuangLingkup $standarRuangLingkup)
     {
+        $standarRuangLingkup = StandarRuangLingkup::all();
 
-        $data = DataPendahuluan::with('user')
-            ->with('datapendahuluanGrade', function($q){
-                $q->whereYear('created_at', '=', '2021');
-            })
-            ->get();
+        return view('auditor.dashboard', compact('standarRuangLingkup'));
 
-//        $data = User::with('grades','dataPendahuluans')
-//            ->whereHas('roles', function($q){$q->where('name', 'Auditee');
-//        }
-//        )->get();
 
-//        dd($data);
+//         $data = DataPendahuluan::with('user')
+//             ->with('datapendahuluanGrade', function($q){
+//                 $q->whereYear('created_at', '=', '2021');
+//             })
+//             ->get();
 
-        $check = Question::whereYear('created_at','=', Carbon::now()->format('Y'))
-            ->count();
+// //        $data = User::with('grades','dataPendahuluans')
+// //            ->whereHas('roles', function($q){$q->where('name', 'Auditee');
+// //        }
+// //        )->get();
 
-        return view('auditor.dashboard', compact('data','check'));
+// //        dd($data);
+
+//         $check = Question::whereYear('created_at','=', Carbon::now()->format('Y'))
+//             ->count();
+
+        // return view('auditor.dashboard', compact('data','check'));
     }
 
     public function uploadPdf($userId, $year)

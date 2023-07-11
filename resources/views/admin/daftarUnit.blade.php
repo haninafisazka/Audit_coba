@@ -138,11 +138,12 @@
                         </button>
                         <div class="collapse  show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li class="fw-bold"><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode Audit</a>
+                                <li><a href="{{route('admin.dashboard')}}" class="link-dark rounded">Periode Audit</a>
                                 </li>
-                                <li><a href="{{route('daftarUnit')}}" class="link-dark rounded">Unit Audit</a>
+                                <li class="fw-bold"><a href="{{route('daftarUnit')}}" class="link-dark rounded">Unit Audit</a>
                                 </li>
                             </ul>
+                            
                         </div>
                     </li>
                     <li class="mb-1">
@@ -199,10 +200,10 @@
                         <path
                             d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
                     </svg>
-                    DAFTAR PERIODE
+                    UNIT AUDIT
                 </h1>
                 <hr>
-                <a href="{{route('pageTambahPeriodeAudit')}}">
+                <a href="{{route('tambahUnit')}}">
                     <button type="button" class="btn btn-outline-secondary btn-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                              class="bi bi-person-plus-fill" viewBox="0 1 16 16">
@@ -210,7 +211,7 @@
                             <path fill-rule="evenodd"
                                   d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
                         </svg>
-                        <span>Tambah Periode</span>
+                        <span>Tambah Unit</span>
                     </button>
                 </a>
                 <div class="card mb-5 mt-2" id="card-periode">
@@ -219,27 +220,25 @@
                             <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Tanggal Awal</th>
-                                <th>Tanggal Akhir</th>
-                                <th>No SK</th>
-                                <th>File SK</th>
-                                <th>Tanggal SK</th>
-                                <th>Ketua SPI</th>
-                                <th>NIP Ketua SPI</th>
+                                <th>Periode Audit</th>
+                                <th>Standar Ruang Lingkup</th>
+                                <th>Nama Unit</th>
+                                <th>Tanggal Audit</th>
+                                <th>Ketua Tim</th>
+                                <th>NIP Ketua Tim</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($periodeAudit as $v)
+                            @foreach($unitAudit as $v)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$v->tanggal_awal_audit}}</td>
-                                    <td>{{$v->tanggal_akhir_audit}}</td>
-                                    <td>{{$v->no_sk_tugas_audit}}</td>
-                                    <td>{{$v->file_sk}}</td>
-                                    <td>{{$v->tanggal_sk}}</td>
-                                    <td>{{$v->ketua_spi}}</td>
-                                    <td>{{$v->nip_ketua_spi}}</td>
+                                    <td>{{$v->id_periode_audit}}</td>
+                                    <td>{{$v->id_standar_ruang_lingkup}}</td>
+                                    <td>{{$v->nama_unit}}</td>
+                                    <td>{{$v->tanggal_audit}}</td>
+                                    <td>{{$v->ketua_tim}}</td>
+                                    <td>{{$v->nip_ketua_tim}}</td>
                                     <td class="text-center list-inline">
                                         <div class="d-inline-flex bd-highlight">
                                         <form id="form" class="delete-form" action="{{ route('destroy',$v->id) }}"
