@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use App\Models\Standart;
+use App\Models\PeriodeAudit;
 use Illuminate\Support\Facades\DB;
 use app\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -15,16 +17,16 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Standart $periode)
+    public function index(PeriodeAudit $periodeAudit)
     {
 
 //        $standart = DB::table('standarts')
 //            ->select(DB::raw('DATE_FORMAT(created_at,"%Y") as created_at, id, user_id, type, name'))
 //            ->get();
 
-        $periode = User::role(['admin'])->get();
+        $periodeAudit = PeriodeAudit::all();
 
-        return view('admin.dashboard', compact('periode'));
+        return view('admin.dashboard', compact('periodeAudit'));
     }
 
     public function pageTambahPeriodeAudit()
@@ -59,32 +61,36 @@ class AdminController extends Controller
 
     public function tambahPeriodeAudit(Request $request)
     {
-        $request->validate([
-            'tanggal'              =>      'required|string|max:30',
-            'no_sk'                =>      'required|string',
-            'ketua_spi'            =>      'required|string',
-            'nip_ketua'            =>      'required|string',
-            'keterangan'           =>      'required|string',
-        ]);
+        // $request->validate([
+        //     'tanggal_awal_audit'   =>      'required',
+        //     'tanggal_akhir_audit'  =>      'required',
+        //     'no_sk'                =>      'required|string',
+        //     'file_sk'              =>      'required',
+        //     'ketua_spi'            =>      'required|string',
+        //     'nip_ketua'            =>      'required|string',
+        // ]);
 
-//        dd($request->all());
+        $max = PeriodeAudit::max('id');
+        $id = $max +1;
 
-        $user = User::create([
-            'tanggal' => ucwords($request['tanggal']),
-            'no_sk' => ucwords($request['no_sk']),
-            'ketua_spi' => ucwords($request['ketua_spi']),
-            'nip_ketua' => ucwords($request['nip_ketua']),
-            'keterangan' => ucwords($request['keterangan'])
-        ]);
-
-        $user->assignRole('admin');
-
-        if(!is_null($user)) {
-            return redirect()->route('admin.dashboard')->with("success", "Berhasil Tambah");
+        $periode = new PeriodeAudit;
+        $periode->id    = $id;
+        $periode->tanggal_awal_audit  = $request->input('tanggal_awal_audit');
+        $periode->tanggal_akhir_audit = $request->input('tanggal_akhir_audit');
+        $periode->no_sk_tugas_audit      = $request->input('no_sk_tugas_audit');
+        $fileName = '';
+        if ($request->hasFile('file_sk')){
+            $file_sk       = $request->file('file_sk');
+            $fileName   = "file"."-".Str::random(5).".".$file_sk->getClientOriginalExtension();
+            $file_sk->move(public_path('/file/'),$fileName);
         }
-        else {
-            return back()->with("error", "Proses Gagal");
-        }
+        
+        $periode->file_sk = ($request->hasFile('file_sk')) ? $fileName : $periode->file_sk;
+        $periode->tanggal_sk          = $request->input('tanggal_sk');
+        $periode->ketua_spi           = $request->input('ketua_spi');
+        $periode->nip_ketua_spi       = $request->input('nip_ketua_spi');
+        $periode->save();
+        return redirect()->back();
 
     }
 
@@ -97,6 +103,8 @@ class AdminController extends Controller
             'email'             =>      'required|email|unique:users,email',
             'password'          =>      'required|alpha_num|min:6',
         ]);
+
+
 
 //        dd($request->all());
 
@@ -223,8 +231,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $userAuditee = User::findOrFail($id);
-        $userAuditee->delete();
+        $periode = PeriodeAudit::findOrFail($id);
+        $periode->delete();
 
         return redirect()->back()->with('success','Berhasil Menghapus data');
     }
