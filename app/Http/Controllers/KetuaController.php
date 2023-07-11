@@ -22,9 +22,9 @@ class KetuaController extends Controller
      */
     public function index()
     {
-        $auditor = User::where('role_id', 3)->get();;
+        $auditor = User::role('auditor')->get();
 
-        return view('admin.daftarUnit', compact('unitAudit'));
+        return view('ketua.dashboard', compact('auditor'));
 //         $filter = Carbon::now()->format('Y');
 
 //         $uid = Auth::id();
@@ -279,7 +279,10 @@ class KetuaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $auditor = User::findOrFail($id);
+        $auditor->delete();
+
+        return redirect()->with('success','Berhasil Menghapus data');
     }
 
     public function __construct()

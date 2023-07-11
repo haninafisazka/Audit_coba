@@ -213,13 +213,10 @@
                         @foreach($auditor as $v)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$v->tanggal_awal_audit}}</td>
-                                <td>{{$v->tanggal_akhir_audit}}</td>
-                                <td>{{$v->no_sk_tugas_audit}}</td>
-                                <td>{{$v->file_sk}}</td>
-                                <td>{{$v->tanggal_sk}}</td>
-                                <td>{{$v->ketua_spi}}</td>
-                                <td>{{$v->nip_ketua_spi}}</td>
+                                <td>{{$v->name}}</td>
+                                <td>{{$v->email}}</td>
+                                <td>{{$v->fakultas}}</td>
+                                <td>{{$v->prodi}}</td>
                                 <td class="text-center list-inline">
                                     <div class="d-inline-flex bd-highlight">
                                     <form id="form" class="delete-form" action="{{ route('destroy',$v->id) }}"
