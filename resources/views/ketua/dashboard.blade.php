@@ -188,7 +188,7 @@
 <div class="container-fluid">
     <div class="row mt-3">
         <div class="col">
-            <h2 class="text-center">Daftar Tim</h2>
+            <h2 class="text-center">Daftar Auditor</h2>
             <hr>
             <!-- Recent Sales -->
             <div class="col-12">
@@ -196,65 +196,19 @@
 
         
 
-                <div class="card-body">
+            <div class="card-body">
 
                 <table id="table_standart" class="table table-striped text-center table-bordered">
                     <thead>
                     <tr class="border-bottom">
-                        <th scope="col">Tim</th>
-                        <th scope="col">Auditor</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Fakultas</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Prodi</th>
                         <th scope="col">Aksi</th>
                     </tr>
-                    </thead>    
-<!--        
-                    <div class="search-container">
-                
-        <div class="new-column">+ New</div>
-        <form id="search-form" onsubmit="search(event)">
-            <input type="text" id="search-input" placeholder="Search...">
-        </form>
-        </div>
-
-        <style>
-        .search-container {
-            display: flex;
-            justify-content: space-between; /* Menempatkan elemen di antara tepi kanan dan kiri */
-            align-items: center;
-            margin-top: 25px;
-            margin-bottom: 25px;
-            margin-left: 9px;
-            margin-right: 15px;
-        }
-
-        .new-column {
-            background-color: green;
-            color: white;
-            padding: 4px;
-            width: 7%;
-            border-radius: 3px;
-            /* text: center; */
-        }
-        </style>
-
-    -->
-
-                    <tbody>
-                    <tr class="border-bottom">
-                        <th scope="row"><a>1</a></th>
-                        <td>Sujiman, Sukijan, Sutiman</td>
-                        <td>Teknologi Informasi dan Sains Data</td>
-                        <td>Active</td>
-                        <td>
-                            <form action="{{ route('tambahAuditor') }}" method="post">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">Edit</button>
-                            </form>
-                            <a href="/delete" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
-                        </td>
-                    </tr>
-                    </tbody>
+                    </thead> 
                 </table>
 
                 <!--
