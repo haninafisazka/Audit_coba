@@ -109,14 +109,43 @@
                     {{--                        </div>--}}
                     {{--                    </li>--}}
 
+
+
+
+
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
                                 data-bs-target="#profile-collapse" aria-expanded="false">
-                            <span>User</span>
+                            <span>Standar</span>
+                        </button>
+                        <div class="collapse" id="profile-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li><a href="{{ route('auditor.standar') }}" class="link-dark rounded">Ruang Lingkup</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#profile-collapse" aria-expanded="false">
+                            <span>Setup</span>
                         </button>
                         <div class="collapse show" id="profile-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li class="fw-bold"><a href="{{ route('auditor.profile') }}" class="link-dark rounded">Profile</a></li>
+                                <li class="fw-bold"><a href="{{ route('auditor.setup') }}" class="link-dark rounded">Setup File</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="mb-1">
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#profile-collapse" aria-expanded="false">
+                            <span>Evaluasi</span>
+                        </button>
+                        <div class="collapse show" id="profile-collapse">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                <li class="fw-bold"><a href="{{ route('auditor.tindakan') }}" class="link-dark rounded">Evaluasi</a></li>
                             </ul>
                         </div>
                     </li>
@@ -124,62 +153,95 @@
             </div>
         </div>
         <div class="col">
-            <h2 class="text-center">Ganti Password</h2>
+            <h2 class="text-center">Hasil Evaluasi</h2>
             <hr>
             <div class="card p-3">
                 <form method="POST" action="/auditor/change_password">
                     @csrf
                     <div class="form-group row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Password Saat ini</label>
+                        <label for="password" class="col-md-0 col-form-label text-md-right">Kondisi Awal : </label>
 
-                        <div class="col-md-6">
-                            <input id="password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" autocomplete="current-password">
-                            @error('current_password')
-                            <div id="description" class="invalid-feedback">
-                                {{$message}}
-                            </div>
+                        <div class="col-12">
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" aria-describedby="description" id="description" rows="3" >{{ old('description') }}</textarea>
+                            @error('description')
+                                <div id="description" class="invalid-feedback">
+                                    Deskripsi wajib diisi
+                                </div>
                             @enderror
                         </div>
                     </div>
 
                     <div class="form-group row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Password Baru</label>
+                        <label for="password" class="col-md-0 col-form-label text-md-right">Dasar Evaluasi :</label>
 
-                        <div class="col-md-6">
-                            <input id="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" autocomplete="current-password">
-                            @error('new_password')
-                            <div id="description" class="invalid-feedback">
-                                Password wajib diisi
-                            </div>
+                        <div class="col-12">
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" aria-describedby="description" id="description" rows="3" >{{ old('description') }}</textarea>
+                            @error('description')
+                                <div id="description" class="invalid-feedback">
+                                    Deskripsi wajib diisi
+                                </div>
                             @enderror
                         </div>
                     </div>
 
                     <div class="form-group row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">Konfirmasi Password baru</label>
+                        <label for="password" class="col-md-0 col-form-label text-md-right">Penyebab : </label>
 
-                        <div class="col-md-6">
-                            <input id="new_confirm_password" type="password" class="form-control @error('new_confirm_password') is-invalid @enderror" name="new_confirm_password" autocomplete="current-password">
-                            @error('new_confirm_password')
-                            <div id="description" class="invalid-feedback">
-                                Password tidak sesuai
-                            </div>
+                        <div class="col-12">
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" aria-describedby="description" id="description" rows="3" >{{ old('description') }}</textarea>
+                            @error('description')
+                                <div id="description" class="invalid-feedback">
+                                    Deskripsi wajib diisi
+                                </div>
                             @enderror
                         </div>
                     </div>
 
+ 
+
                     <div class="form-group row mb-3">
-                        <div class="col-md-8 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                Update Password
-                            </button>
+                        <label for="password" class="col-md-0 col-form-label text-md-right">Akibat : </label>
+
+                        <div class="col-12">
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" aria-describedby="description" id="description" rows="3" >{{ old('description') }}</textarea>
+                            @error('description')
+                                <div id="description" class="invalid-feedback">
+                                    Deskripsi wajib diisi
+                                </div>
+                            @enderror
                         </div>
                     </div>
-                </form>
+
+
+
+                    <div class="form-group row mb-3">
+                        <label for="password" class="col-md-0 col-form-label text-md-right">Rekomendasi Follow-Up : </label>
+
+                        <div class="col-12">
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" aria-describedby="description" id="description" rows="3" >{{ old('description') }}</textarea>
+                            @error('description')
+                                <div id="description" class="invalid-feedback">
+                                    Deskripsi wajib diisi
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+
+            
             </div>
-        </div>
+            <div class="row pt-3 mb-4">
+                        <div class="col-auto pe-0">
+                            <button type="submit" class="btn btn-success" onclick="simpanFunction()">Simpan</button>
+                        </div>
+                        <div class="col-auto">
+                            <a type="button" onclick="batalFunction()" href="{{route('auditee.dashboard')}}" class="btn btn-secondary">Batal</a>
+                        </div>
+                    </div> 
+            </div>     
     </div>
 </div>
+
+    
 
 @include('layouts.footer')
 

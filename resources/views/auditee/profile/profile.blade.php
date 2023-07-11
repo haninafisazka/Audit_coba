@@ -105,8 +105,8 @@
                         </button>
                         <div class="collapse show" id="account-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Feedback Temuan</a></li>
-                                <li><a href="{{ route('auditee.profile') }}" class="link-dark rounded">Tindak Lanjut Temuan</a></li>
+                                <li><a href="{{ route('auditee.feedbackTemuan') }}" class="link-dark rounded">Feedback Temuan</a></li>
+                                <li><a href="{{ route('auditee.feedbackTindakLanjut') }}" class="link-dark rounded">Tindak Lanjut Temuan</a></li>
                             </ul>
                         </div>
                     </li>

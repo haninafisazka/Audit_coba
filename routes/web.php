@@ -108,6 +108,8 @@ Route::group(['middleware' => ['role:auditee']], function () {
     Route::get('/auditee/dashboard', [App\Http\Controllers\AuditeeController::class, 'index'])->name('auditee.dashboard');
     Route::get('/auditee/profile', [App\Http\Controllers\AuditeeController::class, 'profile'])->name('auditee.profile');
     Route::get('/auditee/grade', [App\Http\Controllers\AuditeeController::class, 'grade'])->name('auditee.grade');
+    Route::get('/auditee/feedbackTemuan', [App\Http\Controllers\AuditeeController::class, 'feedbackTemuan'])->name('auditee.feedbackTemuan');
+    Route::get('/auditee/feedbackTindakLanjut', [App\Http\Controllers\AuditeeController::class, 'feedbackTindakLanjut'])->name('auditee.feedbackTindakLanjut');
 
     //grade auditee
     Route::get('/auditee/{standart}/{year}/grade', [App\Http\Controllers\AuditeeController::class, 'auditeeGrade'])->name('auditee.auditeeGrade');
@@ -162,6 +164,20 @@ Route::group(['middleware' => ['role:auditor']], function () {
 
     //updateprofile
     Route::post('/auditor/{user}/update/profile', [App\Http\Controllers\AuditorController::class, 'update']);
+
+
+    //setup
+    Route::get('/auditor/setup', [App\Http\Controllers\AuditorController::class, 'setup'])->name('auditor.setup');
+
+    //tindakan
+    Route::get('/auditor/tindakan', [App\Http\Controllers\AuditorController::class, 'tindakan'])->name('auditor.tindakan');
+
+    //standar
+    Route::get('/auditor/standar', [App\Http\Controllers\AuditorController::class, 'standar'])->name('auditor.standar');
+
+
+
+
 
     //    tambahstandart
     Route::post('/tambahStandart', [App\Http\Controllers\StandartController::class, 'create'])->name('tambahStandart');

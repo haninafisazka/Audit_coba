@@ -135,11 +135,25 @@ class AuditorController extends Controller
 
 //        return view('auditor.pdfAuditor', compact('data','dataAuditor', 'tableAuditee','avgauditor', 'avgauditee', 'tableAuditor', 'year', 'auditAuditor', 'auditorName'));
     }
+    
+    public function tindakan()
+    {
+        return view('auditor.tindakan.tindakan');
+    }
 
+    public function standar()
+    {
+        return view('auditor.standar.standar');
+    }
 
     public function profile()
     {
         return view('auditor.profile.profile');
+    }
+
+    public function setup()
+    {
+        return view('auditor.setup.setup');
     }
 
     public function auditing($standartId, $userId)
